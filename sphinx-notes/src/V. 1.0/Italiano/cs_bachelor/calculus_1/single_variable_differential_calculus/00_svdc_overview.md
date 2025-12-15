@@ -16,4 +16,5 @@ Il calcolo differenziale è uno strumento essenziale per la **matematica, l’in
 :maxdepth: 1
 
 01_number_sets_and_intervals.md
+02_functions.md
 ```

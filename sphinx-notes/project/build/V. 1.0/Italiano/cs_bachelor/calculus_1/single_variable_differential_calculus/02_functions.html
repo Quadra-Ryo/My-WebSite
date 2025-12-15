@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; CS notes 1.0 documentation</title>
+    <title>Funzioni &#8212; CS notes 1.0 documentation</title>
   
   
   
@@ -48,6 +48,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'cs_bachelor/calculus_1/single_variable_differential_calculus/02_functions';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Linguaggi di programmazione" href="../../../programming_languages/00_programming_languages_overview.html" />
+    <link rel="prev" title="Insiemi Numerici e Intervalli su ℝ" href="01_number_sets_and_intervals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -110,8 +112,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -154,11 +154,12 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Indice</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../00_cs_overview.html">Laurea Triennale in Informatica</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../00_calculus_overview.html">Analisi 1 - Appunti</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="00_svdc_overview.html">Calcolo Differenziale in Una Variabile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../00_cs_overview.html">Laurea Triennale in Informatica</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../00_calculus_overview.html">Analisi 1 - Appunti</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="00_svdc_overview.html">Calcolo Differenziale in Una Variabile</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="01_number_sets_and_intervals.html">Insiemi Numerici e Intervalli su ℝ</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Funzioni</a></li>
 </ul>
 </details></li>
 </ul>
@@ -304,7 +305,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Funzioni</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -313,9 +314,26 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definizione-di-funzione">1. Definizione di Funzione</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regola-fondamentale-proprieta-delle-corrispondenze">Regola Fondamentale (Proprieta’ delle Corrispondenze)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-della-funzione">Grafico della Funzione</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#immagine-della-funzione">Immagine della Funzione</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proprieta-delle-funzioni">2. Proprieta’ delle Funzioni</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-iniettivita">A. Iniettivita’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-suriettivita">B. Suriettivita’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-biettivita-invertibile">C. Biettivita’ (Invertibile)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funzione-inversa-f-1">3. Funzione Inversa (f^-1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requisito-fondamentale-la-biettivita">Requisito Fondamentale: La Biettività</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definizione-e-trasformazione">Definizione e Trasformazione</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivazione-perche-serve-la-biettivita">Motivazione: Perché serve la Biettività?</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -326,7 +344,149 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <br>
+  <section id="funzioni">
+<h1>Funzioni<a class="headerlink" href="#funzioni" title="Link to this heading">#</a></h1>
+<section id="definizione-di-funzione">
+<h2>1. Definizione di Funzione<a class="headerlink" href="#definizione-di-funzione" title="Link to this heading">#</a></h2>
+<p>Una funzione È definita come una <strong>TERNA DI OGGETTI</strong> (Dominio, Codominio, Legge).</p>
+<p>Una funzione È una corrispondenza f: A -&gt; B tale che:</p>
+<ul class="simple">
+<li><p><strong>A</strong> È l’insieme di partenza, chiamato <strong>Dominio</strong>.</p></li>
+<li><p><strong>B</strong> È l’insieme di arrivo, chiamato <strong>Codominio</strong>.</p></li>
+<li><p><strong>La Legge (f)</strong> mette in corrispondenza gli elementi</p></li>
+</ul>
+<section id="regola-fondamentale-proprieta-delle-corrispondenze">
+<h3>Regola Fondamentale (Proprieta’ delle Corrispondenze)<a class="headerlink" href="#regola-fondamentale-proprieta-delle-corrispondenze" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Ogni elemento di A</strong> deve essere messo in corrispondenza.</p></li>
+<li><p><strong>Ogni elemento di A</strong> È messo in corrispondenza con <strong>uno e un solo elemento di B</strong>.</p></li>
+</ul>
+<p><img alt="Interval" src="../../../_images/function_def.png" /></p>
+<p>In questa immagine si può notare con lettere scritte in verde le funzioni, in rosso non funzioni:</p>
+<ul class="simple">
+<li><p>L’immagine <strong>A</strong> non è una funzione in quanto non tutti gli elementi del primo insieme vengono messi in corrispondenza.</p></li>
+<li><p>L’immagine <strong>B</strong> non è una funzione in quanto il terzo elemento del primo insieme è messo in corrispondenza con più elementi del secondo.</p></li>
+<li><p>L’immagine <strong>C</strong> è un insieme in quanto tutti gli elementi del primo insieme hanno tutti una sola corrispondenza con gli elementi del secondo.</p></li>
+<li><p>L’immagine <strong>D</strong> è un insieme visto che non c’è nessuna regola che dice che tutti gli elementi del secondo insieme debbano avere una corrispondenza.</p></li>
+</ul>
+</section>
+<section id="grafico-della-funzione">
+<h3>Grafico della Funzione<a class="headerlink" href="#grafico-della-funzione" title="Link to this heading">#</a></h3>
+<p>Il <strong>Grafico di f</strong> (graph(f)) È un sottoinsieme del <strong>Prodotto Cartesiano</strong> A x B.<br />
+graph(f) = {(a, b) in A x B : b = f(a)}</p>
+<p>Esempio: Prendendo come funziona A x B la relazione ℝ x ℝ (Cioè il piano cartesiano stesso) la coppia (a,b) di punti fa parte del grafico solo se soddisfa la funzione f e quindi se b = f(a).<br />
+Esempio Pratico: f(x) = x^2<br />
+La funzione f(x) = x^2 (Dominio ℝ, Codominio ℝ) agisce così:<br />
+f(2) = 4<br />
+f(-1) = 1<br />
+f(0) = 0</p>
+<p>Il grafico di f è l’insieme di questi punti:
+graph(f) = {…, (-1, 1), (0, 0), (2, 4), …}</p>
+</section>
+<section id="immagine-della-funzione">
+<h3>Immagine della Funzione<a class="headerlink" href="#immagine-della-funzione" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Immagine di D sottoinsieme A</strong>: L’insieme f(D) = {f(x) : x in D}.</p>
+<ul>
+<li><p><strong>In poche parole</strong>: È l’insieme di tutti i valori di output (y) che la funzione produce quando prendiamo in considerazione <strong>SOLO un sottoinsieme (D)</strong> del dominio.</p></li>
+<li><p><strong>Esempio</strong>: Se f(x) = x^2 (Dominio ℝ) e consideriamo il sottoinsieme D = [1, 2] (solo i numeri tra 1 e 2).</p>
+<ul>
+<li><p>f(D) = [1, 4]. (L’immagine È l’insieme di tutti i numeri tra 1^2=1 e 2^2=4).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Immagine della Funzione (Imm(f))</strong>: L’immagine dell’intero dominio, Imm(f) = f(A).</p>
+<ul>
+<li><p><strong>In poche parole</strong>: È l’insieme di <strong>tutti i valori di output (y)</strong> che la funzione puo’ raggiungere in assoluto. È la proiezione del grafico sull’asse y.</p></li>
+<li><p><strong>Esempio</strong>: Se f(x) = x^2 (Dominio A=R, Codominio B=R).</p>
+<ul>
+<li><p>Imm(f) = [0, +∞). (La funzione non puo’ mai produrre numeri negativi ma parte da 0 e arriva ad infinito).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Relazione chiave</strong>: Imm(f) È sempre un sottoinsieme del Codominio (B).</p>
+<ul>
+<li><p>Imm(f) e B sono uguali <strong>solo se</strong> la funzione È suriettiva.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="proprieta-delle-funzioni">
+<h2>2. Proprieta’ delle Funzioni<a class="headerlink" href="#proprieta-delle-funzioni" title="Link to this heading">#</a></h2>
+<section id="a-iniettivita">
+<h3>A. Iniettivita’<a class="headerlink" href="#a-iniettivita" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Definizione</strong>: Una funzione f: A -&gt; B si dice <strong>iniettiva</strong> se a elementi distinti del dominio corrispondono elementi distinti nel codominio.</p>
+<ul>
+<li><p>Se x1 != x2, allora f(x1) != f(x2).</p></li>
+</ul>
+</li>
+<li><p><strong>Criterio Grafico</strong>: Ogni retta orizzontale incontra il grafico in <strong>al massimo un punto</strong>.</p></li>
+</ul>
+<p><img alt="injective" src="../../../_images/injective.png" /><br />
+La funzione a sinistra è iniettiva in quanto tracciando delle rette orizzontali non troveremo mai due punti di contatto con il grafico mentre la funzione a destra non è iniettiva in quanto si possono trovare delle rette orizzontali che toccano due volte il grafico.</p>
+</section>
+<section id="b-suriettivita">
+<h3>B. Suriettivita’<a class="headerlink" href="#b-suriettivita" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Definizione</strong>: Una funzione f: A -&gt; B si dice <strong>suriettiva</strong> se l’immagine della funzione coincide con l’intero codominio.</p>
+<ul>
+<li><p>Per ogni y in B, esiste ALMENO UN x in A tale che f(x) = y.</p></li>
+<li><p><strong>Imm(f) = B</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Criterio Grafico</strong>: Ogni retta orizzontale tracciata nel codominio incontra il grafico in <strong>almeno un punto</strong>.<br />
+<img alt="surjective" src="../../../_images/surjective.png" /><br />
+La funzione a sinistra è suriettiva in quanto tracciando delle rette orizzontali troveremo sempre almeno un punto di contatto nel grafico mentre la funzione a destra non è suriettiva in quanto si possono trovare delle rette orizzontali che non toccano mai il grafico.</p></li>
+</ul>
+</section>
+<section id="c-biettivita-invertibile">
+<h3>C. Biettivita’ (Invertibile)<a class="headerlink" href="#c-biettivita-invertibile" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Definizione</strong>: Una funzione È <strong>biettiva</strong> se È <strong>SIA iniettiva che suriettiva</strong>.</p></li>
+<li><p><strong>Criterio Grafico</strong>: Ogni retta orizzontale incontra il grafico in <strong>UN SOLO punto</strong>.<br />
+<img alt="bijective" src="../../../_images/bijective.png" /><br />
+La funzione a sinistra è biettiva in quanto tracciando delle rette orizzontali troveremo sempre solo un punto di contatto nel grafico mentre la funzione a destra non è biettiva in quanto si può vedere che le rette orizzontali rosse toccano più di una volta il grafico.</p></li>
+</ul>
+</section>
+</section>
+<section id="funzione-inversa-f-1">
+<h2>3. Funzione Inversa (f^-1)<a class="headerlink" href="#funzione-inversa-f-1" title="Link to this heading">#</a></h2>
+<section id="requisito-fondamentale-la-biettivita">
+<h3>Requisito Fondamentale: La Biettività<a class="headerlink" href="#requisito-fondamentale-la-biettivita" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Regola</strong>: Solo le funzioni <strong>biettive</strong> ammettono una funzione inversa, che si indica con f^-1.</p></li>
+</ul>
+</section>
+<section id="definizione-e-trasformazione">
+<h3>Definizione e Trasformazione<a class="headerlink" href="#definizione-e-trasformazione" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La funzione inversa scambia il ruolo di dominio e codominio: f^-1: B -&gt; A.</p></li>
+<li><p><strong>Definizione Formale</strong>:
+f^-1(b) = a &lt;=&gt; f(a) = b
+    * <strong>In poche parole</strong>: L’inversa prende un valore b (output di f) e restituisce il suo input originale a.</p></li>
+</ul>
+</section>
+<section id="motivazione-perche-serve-la-biettivita">
+<h3>Motivazione: Perché serve la Biettività?<a class="headerlink" href="#motivazione-perche-serve-la-biettivita" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Motivazione</strong>: La funzione deve essere sia iniettiva che suriettiva per garantire che per ogni elemento b in B, esista <strong>uno e un solo</strong> elemento a in A che le corrisponda (ovvero, che f(a) = b).</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Suriettività Garantisce l’Esistenza</strong>:
+    * <strong>Spiegazione</strong>: Per ogni b in B (il nuovo Dominio), la suriettività garantisce che <em>esiste almeno</em> un elemento a in A tale che f(a) = b. Non ci sono “buchi” nel Codominio originale.</p></li>
+<li><p><strong>Iniettività Garantisce l’Unicità</strong>:
+    * <strong>Spiegazione</strong>: L’iniettività garantisce che l’elemento a trovato sia <strong>unico</strong>. Senza questa proprietà, l’inversa non saprebbe quale dei due (o piu’) a restituire.</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Conclusione</strong>: Solo quando e’ biettiva, la funzione inversa puo’ essere definita in modo univoco in quanto siamo sicuri che manterrà le caratteristiche viste in “Regola Fondamentale (Proprieta’ delle Corrispondenze)” precedentemente.</p></li>
+</ul>
+<p><img alt="inverse" src="../../../_images/inverse.png" /></p>
+<br>
 <!-- Versions and languages set-up -->
 <style>
   .fixed-bar {
@@ -587,7 +747,10 @@ ___\\ \\     // //___
 
 
 </script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></section>
+</section>
+</section>
+
 
                 </article>
               
@@ -599,6 +762,24 @@ ___\\ \\     // //___
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01_number_sets_and_intervals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Insiemi Numerici e Intervalli su ℝ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../programming_languages/00_programming_languages_overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linguaggi di programmazione</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -614,9 +795,26 @@ ___\\ \\     // //___
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definizione-di-funzione">1. Definizione di Funzione</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regola-fondamentale-proprieta-delle-corrispondenze">Regola Fondamentale (Proprieta’ delle Corrispondenze)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-della-funzione">Grafico della Funzione</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#immagine-della-funzione">Immagine della Funzione</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proprieta-delle-funzioni">2. Proprieta’ delle Funzioni</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-iniettivita">A. Iniettivita’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-suriettivita">B. Suriettivita’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-biettivita-invertibile">C. Biettivita’ (Invertibile)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funzione-inversa-f-1">3. Funzione Inversa (f^-1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requisito-fondamentale-la-biettivita">Requisito Fondamentale: La Biettività</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definizione-e-trasformazione">Definizione e Trasformazione</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivazione-perche-serve-la-biettivita">Motivazione: Perché serve la Biettività?</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
