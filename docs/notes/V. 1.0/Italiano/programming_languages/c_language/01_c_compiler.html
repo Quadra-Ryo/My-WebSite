@@ -48,6 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/01_c_compiler';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Funzioni e variabili" href="02_c_functions.html" />
     <link rel="prev" title="Introduzione al C" href="00_c_overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -169,6 +170,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Linguaggi di Programmazione</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Introduzione al C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Compilatore C e Hello World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Funzioni e variabili</a></li>
 </ul>
 </details></li>
 </ul>
@@ -355,7 +357,7 @@ document.write(`
 </div>
 <p>Possiamo andare a compilare questo file con il comando <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">main.c</span></code>, una volta eseguito il comando si vedrà apparire nella cartella un file che si chiama <code class="docutils literal notranslate"><span class="pre">a.exe</span></code> (in caso voi stiate usando windows <code class="docutils literal notranslate"><span class="pre">a.out</span></code> su Unix, Linux e Mac).<br />
 Aprendo un terminale ed andando ad eseguire questo file usando il comando <code class="docutils literal notranslate"><span class="pre">./a.exe</span></code> si andrà ad eseguire correttamente il file compilato e infatti si vedrà come output nella console la stringa “Hello world”.</p>
-<p>Andando a compilare utilizzando il comando <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-S</span> <span class="pre">main.c</span></code> potremo andare a salvare all’interno della nostra cartella, oltre al file compilato, anche un file “.s” che conterrà il codice assembly del programma stesso.<br />
+<p>Andando a compilare utilizzando il comando <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-S</span> <span class="pre">main.c</span></code> potremo andare a salvare all’interno della nostra cartella un file “.s” che conterrà il codice assembly del programma stesso.<br />
 Aprendolo potremo notare una chiamata <code class="docutils literal notranslate"><span class="pre">bl</span> <span class="pre">_printf</span></code> con la stringa <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World\n&quot;</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">bl</span><span class="w"> </span><span class="n">_printf</span>
 
@@ -804,6 +806,15 @@ ___\\ \\     // //___
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Introduzione al C</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="02_c_functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Funzioni e variabili</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

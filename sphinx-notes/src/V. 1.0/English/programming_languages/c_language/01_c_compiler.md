@@ -15,7 +15,7 @@ int main(void){
 We can compile this file with the command `cc main.c`. Once the command is executed, you will see a file called `a.exe` appear in the folder (if you are using Windows, `a.out` on Unix, Linux and Mac).
 Opening a terminal and executing this file using the command `./a.exe` will correctly execute the compiled file and indeed you will see the string "Hello world" as output in the console.
 
-By compiling using the command `cc -S main.c` we can save in our folder, in addition to the compiled file, also an ".s" file that will contain the assembly code of the program itself.
+By compiling using the command `cc -S main.c` we can save in our folder an ".s" file that will contain the assembly code of the program itself.
 Opening it we can notice a call `bl _printf` with the string `"Hello World\n"`.
 ```c
 bl _printf

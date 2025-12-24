@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>C Compiler and Hello World &#8212; CS notes 1.0 documentation</title>
+    <title>Functions and Variables &#8212; CS notes 1.0 documentation</title>
   
   
   
@@ -45,11 +45,10 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/01_c_compiler';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/02_c_functions';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Functions and Variables" href="02_c_functions.html" />
-    <link rel="prev" title="Introduction to C" href="00_c_overview.html" />
+    <link rel="prev" title="C Compiler and Hello World" href="01_c_compiler.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,8 +168,8 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Programming Languages</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Introduction to C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">C Compiler and Hello World</a></li>
-<li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Functions and Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">C Compiler and Hello World</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Functions and Variables</a></li>
 </ul>
 </details></li>
 </ul>
@@ -229,7 +228,7 @@
       
       
       
-      <li><a href="../../_sources/programming_languages/c_language/01_c_compiler.md" target="_blank"
+      <li><a href="../../_sources/programming_languages/c_language/02_c_functions.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +312,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>C Compiler and Hello World</h1>
+    <h1>Functions and Variables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -323,15 +322,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-analysis">Code Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-and-stdio-h">Headers and stdio.h</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linker">Linker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-complete-compilation-process">The Complete Compilation Process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-in-practice">How It Works in Practice</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-work-even-without-include-stdio-h">Why Does It Work Even Without <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-linker-error">Example of Linker Error</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-declaration">Function Declaration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printf">Printf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
 </ul>
             </nav>
         </div>
@@ -343,10 +337,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="c-compiler-and-hello-world">
-<h1>C Compiler and Hello World<a class="headerlink" href="#c-compiler-and-hello-world" title="Link to this heading">#</a></h1>
-<p>As already mentioned in the introductory page, a file in C language needs to be compiled before it can be executed.</p>
-<p>Let’s write a simple “hello world” file in C and call it <code class="docutils literal notranslate"><span class="pre">main.c</span></code>. Even trying to execute it by transforming it into an executable, the latter will not execute correctly.</p>
+  <section id="functions-and-variables">
+<h1>Functions and Variables<a class="headerlink" href="#functions-and-variables" title="Link to this heading">#</a></h1>
+<p>In C, a function is a block of code that performs a specific task and can return a value.<br />
+It serves to organize the program, avoid duplications, and make the code more readable and maintainable.</p>
+<section id="function-declaration">
+<h2>Function Declaration<a class="headerlink" href="#function-declaration" title="Link to this heading">#</a></h2>
+<p>Let’s take as an example the code we wrote in the previous documentation pages and analyze the function we wrote, the main:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
@@ -355,171 +352,178 @@ document.write(`
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We can compile this file with the command <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">main.c</span></code>. Once the command is executed, you will see a file called <code class="docutils literal notranslate"><span class="pre">a.exe</span></code> appear in the folder (if you are using Windows, <code class="docutils literal notranslate"><span class="pre">a.out</span></code> on Unix, Linux and Mac).
-Opening a terminal and executing this file using the command <code class="docutils literal notranslate"><span class="pre">./a.exe</span></code> will correctly execute the compiled file and indeed you will see the string “Hello world” as output in the console.</p>
-<p>By compiling using the command <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-S</span> <span class="pre">main.c</span></code> we can save in our folder an “.s” file that will contain the assembly code of the program itself.
-Opening it we can notice a call <code class="docutils literal notranslate"><span class="pre">bl</span> <span class="pre">_printf</span></code> with the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World\n&quot;</span></code>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">bl</span><span class="w"> </span><span class="n">_printf</span>
-
-<span class="p">...</span>
-
-<span class="p">.</span><span class="n">asciz</span><span class="w"> </span><span class="s">&quot;Hello World </span><span class="se">\n</span><span class="s">&quot;</span>
-</pre></div>
-</div>
-<p>Now we can introduce a new concept, compiler optimization. When we compile a program we can decide an optimization level that we want to use by adding <code class="docutils literal notranslate"><span class="pre">-O1</span></code>, <code class="docutils literal notranslate"><span class="pre">-O2</span></code> or <code class="docutils literal notranslate"><span class="pre">-O3</span></code>. Obviously the higher the optimization level, the greater the level of optimization applied by the compiler itself.
-If the optimization level is not specified, the default will be <code class="docutils literal notranslate"><span class="pre">-O0</span></code>, that is “no optimization”.
-Optimization is a request that we make to the compiler to give it the possibility to find inefficiencies in our code and that it will translate into a more efficient program but with the exact same behavior as the provided code.
-So by calling the command <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-O2</span> <span class="pre">-S</span> <span class="pre">main.c</span></code> we can compile our program more efficiently and we can also read the assembly file that derives from it.</p>
-<p>We will immediately notice some things:</p>
+<p>Let’s start by seeing how a function is defined:</p>
 <ul class="simple">
-<li><p>The program is much shorter</p></li>
-<li><p>The call to the <code class="docutils literal notranslate"><span class="pre">printf</span></code> function has disappeared and in its place there is a call to the <code class="docutils literal notranslate"><span class="pre">puts</span></code> function. Indeed, the latter has a very similar operation to the printf function with two substantial differences: it automatically adds the new line at the end of the string and is simpler and optimized for this specific case.</p></li>
-<li><p>The string that is present at the end of the code is no longer <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World\n&quot;</span></code> but <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code> because the compiler has recognized the difference between the two functions by automatically removing the new line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code></p></li>
+<li><p>Open the curly braces</p></li>
+<li><p>Write the block of code you want to execute</p></li>
+<li><p>Close the curly braces</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">bl</span><span class="w"> </span><span class="n">_puts</span>
-
-<span class="p">...</span>
-
-<span class="p">.</span><span class="n">asciz</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span>
+<p>Let’s break down this definition to understand it better.<br />
+Let’s start with the line <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code>:</p>
+<ul class="simple">
+<li><p>We can see the keyword <code class="docutils literal notranslate"><span class="pre">int</span></code>, this keyword defines the return type of the value returned by the function itself. This value must be present and must be positioned before the function name.</p></li>
+<li><p>Then we can find the function name, in this case <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+<li><p>Finally, within parentheses we find the list of arguments that the function requires as input, in this case <code class="docutils literal notranslate"><span class="pre">(void)</span></code> meaning the function doesn’t require any arguments to be executed.</p></li>
+</ul>
+<div class="info sd-bg-info sd-text-white admonition">
+<p class="admonition-title">INFO</p>
+<p>You can also leave two empty parentheses <code class="docutils literal notranslate"><span class="pre">main()</span></code> as newer, more modern C compilers accept and interpret it correctly, but in older compilers this would result in an error, which is why it’s good practice to insert <code class="docutils literal notranslate"><span class="pre">void</span></code> inside the parentheses when there are no parameters to pass.</p>
+</div>
+<p>Let’s make an example with a different function:</p>
+<div class="info sd-bg-info sd-text-white admonition">
+<p class="admonition-title">INFO</p>
+<p>A good practice is to write all code in English: variable names, function names, and comments.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<section id="code-analysis">
-<h2>Code Analysis<a class="headerlink" href="#code-analysis" title="Link to this heading">#</a></h2>
-<p>Even though it seems very simple, we can learn a lot from the code we just wrote even though it’s just a simple “Hello World”.</p>
-<p>Let’s start with the first instruction:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-</pre></div>
-</div>
-<p>All instructions that begin with the <code class="docutils literal notranslate"><span class="pre">#</span></code> character in C are considered <strong>preprocessor directives</strong>.
-Directives are parts of code that are processed before the program itself is compiled. Sometimes this process can be done by the compiler itself but it is useful to imagine this process as done by a program external to the processor.</p>
-<p>The preprocessor that interprets these directives does a very simple action: a transformation action.
-Imagine as if the preprocessor went to include the file that is between <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> inside our file. So it’s as if the preprocessor went to overwrite our line of code with the file itself that it finds somewhere in our PC’s memory, concatenating the content of the included file with our code.
-In this case we are having the library file <code class="docutils literal notranslate"><span class="pre">stdio.h</span></code> included in our code.</p>
-<p>Example of how a preprocessor works:
-Suppose we have a file named “print.c” with only one line of code inside, that is <code class="docutils literal notranslate"><span class="pre">printf(&quot;Hello</span> <span class="pre">World\n&quot;);</span></code>. Now suppose we have the following code:</p>
+<p>Let’s analyze this function:</p>
+<ul class="simple">
+<li><p>We can notice that the sum function returns a value of type <code class="docutils literal notranslate"><span class="pre">int</span></code> (The int value is an integer number, the various data types will be covered in the documentation pages to come)</p></li>
+<li><p>We can also notice that it needs two distinct parameters, both of integer type, named <code class="docutils literal notranslate"><span class="pre">num1</span></code> and <code class="docutils literal notranslate"><span class="pre">num2</span></code> (These are the names with which you can call the values passed to the function within the function itself)</p></li>
+<li><p>It returns the value obtained from the expression <code class="docutils literal notranslate"><span class="pre">num1</span> <span class="pre">+</span> <span class="pre">num2</span></code>, once the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is executed the function will stop being executed and will immediately return the chosen value to the calling function. Obviously the return value type must be equal to the one declared before the function name, but in this case there’s no problem since the function actually returns an integer (int + int = int, well-typed function).</p></li>
+</ul>
+<p>Now let’s call our function inside the main to check that everything works. To do this we can print the result returned by the function itself with a <code class="docutils literal notranslate"><span class="pre">printf(&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d\n&quot;,</span> <span class="pre">sum(3,4));</span></code> obtaining the following code:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;print.c&quot;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The operation: 3 + 4 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The output we will have by executing this program will be exactly “Hello World” because the precompiler will have replaced the include with the line of code that we had inserted in the “print.c” file, compiling the following code:</p>
+</section>
+<section id="printf">
+<h2>Printf<a class="headerlink" href="#printf" title="Link to this heading">#</a></h2>
+<p>Let’s delve deeper into the function we’re using and the way we wrote the function call itself.</p>
+<p>Let’s start by saying that the function name is an abbreviation of <strong>“print formatted”</strong>, that is, a function that can be formatted in a specific way according to our needs.<br />
+In this case we will have two fundamental parts inside the string passed to the function (<code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d\n&quot;</span></code>):</p>
+<ul class="simple">
+<li><p>A “format” part</p></li>
+<li><p>An identifier (In this case <code class="docutils literal notranslate"><span class="pre">%d</span></code>)</p></li>
+</ul>
+<p>The format part is the “static” part such as “The operation: 3 + 4 = … \n”, this part will be printed exactly as it is written.<br />
+The part preceded by the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol is called an identifier and serves to indicate that in that position there will be a variable value, in the case of <code class="docutils literal notranslate"><span class="pre">%d</span></code> this variable will be of integer type (In fact our function returns an <code class="docutils literal notranslate"><span class="pre">int</span></code>).</p>
+<p>After the string we can see that another argument is passed: <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">sum(3,4)</span></code> which is the value we want to overwrite on our identifier.</p>
+<p>In the previous lesson we saw how the declaration of the <code class="docutils literal notranslate"><span class="pre">printf</span></code> function is <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">printf(const</span> <span class="pre">char</span> <span class="pre">*</span> <span class="pre">restrict</span> <span class="pre">format,</span> <span class="pre">...);</span></code>, now we can more clearly understand the meaning of those dots present at the end of the function declaration, they serve to symbolize that the function has a variable number of parameters depending on the number of identifiers present inside the string (Functions of this type are called <strong>variadic functions</strong>).</p>
+<p>In case you make an error like <code class="docutils literal notranslate"><span class="pre">printf(&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d,</span> <span class="pre">%d\n&quot;,</span> <span class="pre">sum(3,4));</span></code> (Insert two identifiers but only one value to substitute) the code will compile correctly even if it will generate a warning (If you don’t see it try compiling using the command <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-W</span> <span class="pre">-Wall</span> <span class="pre">main.c</span></code>), this is because this error leads to undefined behavior, the value overwritten to the second identifier could be anything and could also cause the program itself to crash.<br />
+In fact, if you tried to run the function as written above you would most likely receive a different output string than mine: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">7,</span> <span class="pre">-1836453600</span></code></p>
+</section>
+<section id="main">
+<h2>Main<a class="headerlink" href="#main" title="Link to this heading">#</a></h2>
+<p>The <strong>Main</strong> function instead is a special function, as you could see to call the sum function we wrote we had to make an explicit call (call it with <code class="docutils literal notranslate"><span class="pre">sum(3,4)</span></code>) but main is never called.
+This is because the main function is a special function, it is the starting point of every program, when a program is launched the code that is executed is actually the one inside the main function itself.<br />
+This implies that in C code cannot be written in a global scope outside of a function (as happens in Python for example) and that every program must necessarily have a function named main.</p>
+<p>Error! ❌:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Error! ❌:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Having established that the “special” main function must be present in the code, we can notice that the function returns an integer and that by default we wrote <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">0</span></code>.<br />
+Although it may seem strange since the main function is not called from anywhere inside the program, the return value of main is fundamental to signal to the operating system whether our program had a positive or negative outcome.<br />
+By convention (Unix) a “main” program is considered executed without errors when the return value is 0, in any other case specific values are used to symbolize different errors.<br />
+In addition to this, in case programs are called in a concatenated way using a logical and like this <code class="docutils literal notranslate"><span class="pre">./a.exe</span> <span class="pre">&amp;&amp;</span> <span class="pre">ls</span></code> this command will execute both distinct commands only if the first program doesn’t encounter an error, in case a.exe returned a number different from 0 in fact the ls command would not be executed (This is because thanks to a <strong>short circuit</strong> mechanism knowing that just one false expression is enough to make the logical and between two expressions return false, the second command is not even executed since its outcome couldn’t influence the expression’s return anyway) this way we can be certain that at the first error found my program stops without going forward.</p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h2>
+<p>Variables are memory cells to which we “give a name” so we can then save specific data in them.<br />
+We can see them as small boxes inside our memory in which we can insert the data we want to save at that moment.<br />
+Let’s try to write the sum function with local variables to add two numbers inside the main.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of 3 and 4 is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="headers-and-stdio-h">
-<h2>Headers and stdio.h<a class="headerlink" href="#headers-and-stdio-h" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">stdio.h</span></code> file is a file that contains all the headers (from which the <code class="docutils literal notranslate"><span class="pre">.h</span></code> derives) of the functions that are contained within the stdio library.
-Headers serve to give the compiler an idea of how the functions we use in our code are formed, such as <code class="docutils literal notranslate"><span class="pre">printf</span></code>. In fact, <code class="docutils literal notranslate"><span class="pre">printf</span></code> is a function that is part of the C standard library but is not part of the language itself (like for example “int”, “void”, “for”, “return”, etc. which are C keywords).
-In fact, C files can have two extensions <code class="docutils literal notranslate"><span class="pre">.h</span></code> or <code class="docutils literal notranslate"><span class="pre">.c</span></code>. Both contain C code but in the first case it contains code useful for making the code work but without the logic of the functions themselves, while in the second case the file contains the logic of the functions themselves. Very often <code class="docutils literal notranslate"><span class="pre">.h</span></code> files will be included in different <code class="docutils literal notranslate"><span class="pre">.c</span></code> files using the preprocessor.</p>
-<p>Let’s try to eliminate the line of code <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code> to see what happens.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="error sd-bg-danger sd-text-white admonition">
-<p class="admonition-title">COMPILER ERROR</p>
-<p>main.c:2:5: error: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</p>
-</div>
-<p>The error is telling us that inside our <code class="docutils literal notranslate"><span class="pre">main.c</span></code> file at line 2, column 5 an implicit declaration of a function named <code class="docutils literal notranslate"><span class="pre">printf</span></code> was found. This is because the compiler cannot understand the correct arguments and return type for the function it finds.
-Now, instead of including the header file again, let’s try to include the declaration that is found in the official documentation of the function inside the file.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<p>As you can see, to declare a variable we also used a syntax similar to that of a function, first the type and then immediately after the name we want to assign to the variable.<br />
+In C it is necessary to explicitly type variables, meaning before assigning a value to a variable we must specify what type that variable is (unlike languages like Python where syntax like <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">5</span></code> is allowed).<br />
+What we did inside the program we just wrote essentially consists of two steps that happen simultaneously, the creation of a variable <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">num1</span></code> and the initialization of the variable to a starting value which can be a number (<code class="docutils literal notranslate"><span class="pre">num1</span> <span class="pre">=</span> <span class="pre">3;</span></code>) or an expression (<code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">num1</span> <span class="pre">+</span> <span class="pre">num2;</span></code>).</p>
+<p>The same program can be written in other ways such as:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of 3 and 4 is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>As you can see, this line of code that we inserted is very similar to our <code class="docutils literal notranslate"><span class="pre">main</span></code> with the only difference that curly braces are not present and the logic of the function itself is not present, but after defining the function arguments, there is a semicolon.
-This is called <strong>function prototyping</strong>. It serves to explicitly declare the return type and parameter types of the function so that when another program calls the desired function (in this case <code class="docutils literal notranslate"><span class="pre">printf</span></code>), even without having the code of the function itself available, it is able to know what type of variable it returns and what type of arguments to pass to the function, giving the minimum information necessary to the compiler to be able to produce the assembly code to compile.</p>
-<p>In fact, if we tried to compile this code and execute it, we would see that it will compile smoothly and will have the exact same function as the code in which <code class="docutils literal notranslate"><span class="pre">&lt;stdio.h&gt;</span></code> was included.</p>
-</section>
-<section id="linker">
-<h2>Linker<a class="headerlink" href="#linker" title="Link to this heading">#</a></h2>
-<p>You may have wondered “But how is it possible that just by using the function header, the program reads the code inside the function I call?”.
-This happens thanks to a program called <strong>Linker</strong>.
-This program takes care of taking the code you wrote, intercepting the functions you used but did not define (external functions whose body is not present in your code), linking your code with the libraries in which that code is located and finally returning as output the complete executable (<code class="docutils literal notranslate"><span class="pre">.out</span></code> or <code class="docutils literal notranslate"><span class="pre">.exe</span></code>).</p>
-<section id="the-complete-compilation-process">
-<h3>The Complete Compilation Process<a class="headerlink" href="#the-complete-compilation-process" title="Link to this heading">#</a></h3>
-<p>When we compile a C program, several phases actually occur in sequence:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Source code (.c) 
-    ↓ [PREPROCESSOR]
-Preprocessed code 
-    ↓ [COMPILER]
-Assembly code (.s)
-    ↓ [ASSEMBLER]
-Object code (.o or .obj)
-    ↓ [LINKER]
-Final executable (a.out or a.exe)
-</pre></div>
-</div>
-</section>
-<section id="how-it-works-in-practice">
-<h3>How It Works in Practice<a class="headerlink" href="#how-it-works-in-practice" title="Link to this heading">#</a></h3>
-<p>Let’s take as an example our code with <code class="docutils literal notranslate"><span class="pre">printf</span></code>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<p>This code is substantially identical to the code we wrote previously with the only difference that in this case we don’t initialize the variables to any value, so they start from a default value (Assigned by the compiler itself) but we make an assignment of values after the declaration.<br />
+All the variables we’ve seen have local scoping, this means they exist only inside the function itself. To better understand this concept let’s return to the sum function example.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The operation: 3 + 4 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>During compilation:</strong></p>
-<ul class="simple">
-<li><p>The compiler sees the prototype of <code class="docutils literal notranslate"><span class="pre">printf</span></code></p></li>
-<li><p>It knows that <code class="docutils literal notranslate"><span class="pre">printf</span></code> takes a string and returns an <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
-<li><p>It generates assembly code that makes a call to <code class="docutils literal notranslate"><span class="pre">printf</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">bl</span> <span class="pre">_printf</span></code>)</p></li>
-<li><p>The compiler does <strong>NOT</strong> need the actual code of <code class="docutils literal notranslate"><span class="pre">printf</span></code>, only its “signature”</p></li>
-<li><p>It produces an object file <code class="docutils literal notranslate"><span class="pre">main.o</span></code></p></li>
-</ul>
-<p><strong>During linking:</strong></p>
-<ul class="simple">
-<li><p>The linker takes <code class="docutils literal notranslate"><span class="pre">main.o</span></code></p></li>
-<li><p>It sees that there is a reference to <code class="docutils literal notranslate"><span class="pre">printf</span></code> but the code of <code class="docutils literal notranslate"><span class="pre">printf</span></code> is not in <code class="docutils literal notranslate"><span class="pre">main.o</span></code></p></li>
-<li><p>It goes to look for <code class="docutils literal notranslate"><span class="pre">printf</span></code> in the C standard library (usually <code class="docutils literal notranslate"><span class="pre">libc.so</span></code> on Linux or <code class="docutils literal notranslate"><span class="pre">msvcrt.dll</span></code> on Windows)</p></li>
-<li><p>It links your code with the library, creating the final executable</p></li>
-</ul>
-<p>The linker is a separate program (often called <code class="docutils literal notranslate"><span class="pre">ld</span></code>), but it is invoked automatically by the <code class="docutils literal notranslate"><span class="pre">cc</span></code> or <code class="docutils literal notranslate"><span class="pre">gcc</span></code> command:</p>
-</section>
-<section id="why-does-it-work-even-without-include-stdio-h">
-<h3>Why Does It Work Even Without <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code>?<a class="headerlink" href="#why-does-it-work-even-without-include-stdio-h" title="Link to this heading">#</a></h3>
-<p>This is the reason why our example works even by manually providing the prototype:</p>
-<ul class="simple">
-<li><p><strong>With <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code></strong>: The compiler knows the prototype of <code class="docutils literal notranslate"><span class="pre">printf</span></code>, compiles without errors, the linker then links the C standard library</p></li>
-<li><p><strong>With manual prototype</strong>: The compiler knows the prototype (because we provided it), compiles without errors, the linker then links the C standard library (exactly as before)</p></li>
-</ul>
-<p>In both cases, the linker always does the same thing: it automatically links the C standard library.</p>
-</section>
-<section id="example-of-linker-error">
-<h3>Example of Linker Error<a class="headerlink" href="#example-of-linker-error" title="Link to this heading">#</a></h3>
-<p>If instead we try to call a function that doesn’t exist anywhere:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">non_existent_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">non_existent_function</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<p>In this case we will have local variables inside the sum function. So what happens?</p>
+<p>First let’s understand how the functions will be called:</p>
+<ol class="arabic simple">
+<li><p>Being the beginning of the command, main will be called</p></li>
+<li><p>Since printf needs all arguments to be called, as a second function we’ll call sum to have the result to pass to the printf function</p></li>
+<li><p>We will finally call the printf function with all available arguments</p></li>
+</ol>
+<p>This can also be seen in the assembly file:</p>
+<div class="highlight-assembly notranslate"><div class="highlight"><pre><span></span>call	__main  &lt;-- Main
+movl	$4, %edx
+movl	$3, %ecx
+call	sum     &lt;-- Sum
+movl	%eax, %edx
+leaq	.LC0(%rip), %rax
+movq	%rax, %rcx
+call	printf  &lt;-- Printf
 </pre></div>
 </div>
-<p><strong>Compilation</strong>: Ok (the compiler knows the prototype)<br />
-<strong>Linking</strong>: Error</p>
-<div class="error sd-bg-danger sd-text-white admonition">
-<p class="admonition-title">COMPILER ERROR (Given by the linker)</p>
-<p>undefined reference to `non_existent_function’</p>
-</div>
-<p>The linker cannot find the function code in any library and therefore produces an error.</p>
+<p>Instead, at the memory level, what happens?<br />
+Once the sum function is called from main with <strong>arguments</strong> (the values passed to a function during a call are called <strong>arguments</strong>) 3 and 4, these values are saved inside the <strong>parameters</strong> (the variables used inside the function to save the argument values are called <strong>parameters</strong>) num1 and num2.<br />
+The latter (num1 and num2) are nothing but local variables themselves.<br />
+Let’s understand what happens inside memory when we call the sum function:</p>
+<ol class="arabic simple">
+<li><p>Once the function is called, memory is allocated on the stack for the three variables num1, num2 and sum and no value is assigned to them, it’s as if they were created “empty”</p></li>
+<li><p>The variables continue to exist as long as the function is running because they are being used</p></li>
+<li><p>Once the return is executed, the local variables inside the function are “destroyed,” meaning they are deallocated from memory and those specific memory cells can be used for other calls without remaining bound to the local variables</p></li>
+</ol>
+<p>In short, local variables are variables that are created every time the function is called and remain alive only during the function’s execution before being “destroyed”.</p>
 <br>
 <!-- Versions and languages set-up -->
 <style>
@@ -784,7 +788,6 @@ ___\\ \\     // //___
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></section>
 </section>
-</section>
 
 
                 </article>
@@ -798,22 +801,13 @@ ___\\ \\     // //___
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="00_c_overview.html"
+       href="01_c_compiler.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to C</p>
+        <p class="prev-next-title">C Compiler and Hello World</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="02_c_functions.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functions and Variables</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -831,15 +825,10 @@ ___\\ \\     // //___
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-analysis">Code Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-and-stdio-h">Headers and stdio.h</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linker">Linker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-complete-compilation-process">The Complete Compilation Process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-in-practice">How It Works in Practice</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-work-even-without-include-stdio-h">Why Does It Work Even Without <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;stdio.h&gt;</span></code>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-linker-error">Example of Linker Error</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-declaration">Function Declaration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printf">Printf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
 </ul>
   </nav></div>
 

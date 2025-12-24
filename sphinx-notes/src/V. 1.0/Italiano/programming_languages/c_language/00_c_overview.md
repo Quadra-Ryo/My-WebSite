@@ -31,4 +31,5 @@ Studiare il C non significa solo imparare un linguaggio, ma capire **come funzio
 :maxdepth: 1
 
 01_c_compiler.md
+02_c_functions.md
 ```

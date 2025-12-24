@@ -16,7 +16,7 @@ int main(void){
 Possiamo andare a compilare questo file con il comando `cc main.c`, una volta eseguito il comando si vedrà apparire nella cartella un file che si chiama `a.exe` (in caso voi stiate usando windows `a.out` su Unix, Linux e Mac).  
 Aprendo un terminale ed andando ad eseguire questo file usando il comando `./a.exe` si andrà ad eseguire correttamente il file compilato e infatti si vedrà come output nella console la stringa "Hello world".  
 
-Andando a compilare utilizzando il comando `cc -S main.c` potremo andare a salvare all'interno della nostra cartella, oltre al file compilato, anche un file ".s" che conterrà il codice assembly del programma stesso.  
+Andando a compilare utilizzando il comando `cc -S main.c` potremo andare a salvare all'interno della nostra cartella un file ".s" che conterrà il codice assembly del programma stesso.  
 Aprendolo potremo notare una chiamata `bl _printf` con la stringa `"Hello World\n"`.  
 
 ```c
