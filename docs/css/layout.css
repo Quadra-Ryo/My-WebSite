@@ -1,0 +1,53 @@
+/* Layout */
+
+.container {
+    position: relative;
+    z-index: var(--z-content);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+/* Header */
+header {
+    position: relative;
+    z-index: var(--z-header);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.header-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--spacing-md);
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+    align-items: start;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Navigation */
+.nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}

@@ -1,0 +1,82 @@
+/* Theme Colors */
+
+/* Dark Theme */
+body.dark {
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #1e293b;
+    --bg-card: rgba(15, 23, 42, 0.5);
+    --bg-card-hover: rgba(30, 41, 59, 0.5);
+    
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    
+    --accent-primary: #f97316;
+    --accent-secondary: #ea580c;
+    
+    --border-primary: #334155;
+    --border-secondary: #1e293b;
+    --border-accent: rgba(249, 115, 22, 0.3);
+    
+    --shadow-accent: rgba(249, 115, 22, 0.5);
+    --glow-color: rgba(249, 115, 22, 0.3);
+    
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body.dark .circuit-path {
+    stroke: var(--accent-primary);
+}
+
+body.dark .circuit-node {
+    fill: var(--accent-primary);
+}
+
+body.dark .particle {
+    background-color: var(--accent-primary);
+}
+
+/* Light Theme */
+body.light {
+    --bg-primary: #f9fafb;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f3f4f6;
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-card-hover: #f9fafb;
+    
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-tertiary: #6b7280;
+    
+    --accent-primary: #2563eb;
+    --accent-secondary: #1d4ed8;
+    
+    --border-primary: #e5e7eb;
+    --border-secondary: #d1d5db;
+    --border-accent: #bfdbfe;
+    
+    --shadow-accent: rgba(37, 99, 235, 0.5);
+    --glow-color: rgba(59, 130, 246, 0.3);
+    
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body.light .circuit-path {
+    stroke: var(--accent-primary);
+}
+
+body.light .circuit-node {
+    fill: var(--accent-secondary);
+}
+
+body.light .particle {
+    background-color: var(--accent-primary);
+}
+
+/* Smooth theme transitions */
+body {
+    transition: background-color var(--transition-slow), color var(--transition-slow);
+}

@@ -3,139 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niccolò Quadrani's Blog</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #4b096f 0%, #681a7d 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 50px;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .subtitle {
-            color: #666;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.1em;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-card {
-            display: block;
-            padding: 20px 25px;
-            background: linear-gradient(135deg, #da9413 0%, #f357d1 50%, #79de26 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.1em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .link-card .icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-
-        .link-card .description {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #999;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .link-card {
-                padding: 15px 20px;
-            }
-        }
-    </style>
+    <meta name="description" content="Portfolio di Niccolò Quadrani - Junior Robotic Software R&D Engineer specializzato in Python, C, Java e Sphinx">
+    <meta name="author" content="Niccolò Quadrani">
+    <title>Niccolò Quadrani - Robotic Software Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Computer Science Notes</h1>
-        <p class="subtitle">Appunti di informatica</p>
+<body class="dark">
+    <!-- Animated Background -->
+    <div class="background">
+        <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <pattern id="circuit" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+                    <path class="circuit-path" d="M0,50 L50,50 L50,100 M50,50 L100,50 M100,50 L100,0 M100,50 L150,50" 
+                          fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.3"/>
+                    <path class="circuit-path" d="M150,150 L100,150 L100,100 M100,150 L50,150 M50,150 L50,200 M50,150 L0,150" 
+                          fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.3"/>
+                    <circle class="circuit-node" cx="50" cy="50" r="3" fill="#22d3ee" opacity="0.5">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle class="circuit-node" cx="100" cy="50" r="3" fill="#22d3ee" opacity="0.5">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle class="circuit-node" cx="50" cy="150" r="3" fill="#22d3ee" opacity="0.5">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle class="circuit-node" cx="100" cy="150" r="3" fill="#22d3ee" opacity="0.5">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                </pattern>
+            </defs>
+            <rect x="0" y="0" width="100%" height="100%" fill="url(#circuit)"/>
+        </svg>
         
-        <div class="links">
-            <a href="blog/V. 1.0/Italiano/index.html" class="link-card">
-                <div>
-                    <span class="icon">🇮🇹</span>
-                    <strong>Versione Italiana</strong>
-                </div>
-                <div class="description">Appunti in italiano</div>
-            </a>
-            
-            <a href="blog/V. 1.0/English/index.html" class="link-card">
-                <div>
-                    <span class="icon">🇬🇧</span>
-                    <strong>English Version</strong>
-                </div>
-                <div class="description">Notes in English</div>
-            </a>
-        </div>
-
-        <footer>
-            <p>Made using <a href="https://github.com/Quadra-Ryo/Easy-versioning-sphinx" target="_blank">Easy-versioning-sphinx</a> by <a href="https://github.com/Quadra-Ryo" target="_blank">Niccolò Quadrani</a></p>
-        </footer>
+        <div id="particles"></div>
     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-controls">
+            <button class="btn" id="langBtn" aria-label="Cambia lingua">EN</button>
+            <button class="btn" id="themeBtn" aria-label="Cambia tema">☀️</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="profile-container">
+                <div class="profile-column">
+                    <div class="profile-wrapper">
+                        <div class="profile-glow"></div>
+                        <div class="profile">
+                            <img src="src/profile.jpg" alt="Niccolò Quadrani" class="profile-image">
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links under profile -->
+                    <div class="profile-social-links">
+                        <a href="https://www.linkedin.com/in/niccolo-quadrani/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Quadra-Ryo" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                        <a href="src/CV_Niccolo_Quadrani.pdf" target="_blank" rel="noopener noreferrer" class="social-link cv-download" aria-label="Scarica CV">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info">
+                <h1>
+                    Niccolò Quadrani 
+                    <span class="robot-emoji" title="Robotic Engineer">🤖</span>
+                </h1>
+                <p class="email-contact">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <a href="mailto:niccoloquadrani13@gmail.com">niccoloquadrani13@gmail.com</a>
+                </p>
+                <p class="title" id="titleText">Junior Robotic Software R&D Engineer</p>
+                <p class="caption" id="captionText">Sviluppatore software backend di 20 anni con <span class="highlight">3 anni di esperienza lavorativa</span> e 6 anni di studio in programmazione. Localizzato in <span class="highlight">Italia (Toscana, AR)</span>. Specializzato principalmente in <span class="highlight">Python</span>, <span class="highlight">C</span>, <span class="highlight">Java</span> e <span class="highlight">Sphinx</span>, con forte adattabilità acquisita attraverso esperienze in <span class="highlight">robotica</span> ed <span class="highlight">embedded systems</span>.</p>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs" role="navigation" aria-label="Sezioni portfolio">
+            <button class="tab active" data-section="career" id="tab-career">CARRIERA</button>
+            <button class="tab" data-section="projects" id="tab-projects">PROGETTI</button>
+            <button class="tab" data-section="education" id="tab-education">FORMAZIONE</button>
+            <button class="tab" data-section="about" id="tab-about">CHI SONO</button>
+            <button class="tab" data-section="live" id="tab-live">FUORI DAL PC</button>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <section class="content-section active" id="section-career" aria-label="Carriera"></section>
+            <section class="content-section" id="section-projects" aria-label="Progetti"></section>
+            <section class="content-section" id="section-education" aria-label="Formazione"></section>
+            <section class="content-section" id="section-about" aria-label="Chi Sono"></section>
+            <section class="content-section" id="section-live" aria-label="Fuori dal PC"></section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
