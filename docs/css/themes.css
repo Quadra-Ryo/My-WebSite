@@ -27,15 +27,15 @@ body.dark {
 }
 
 body.dark .circuit-path {
-    stroke: var(--accent-primary);
+    stroke: #22d3ee;
 }
 
 body.dark .circuit-node {
-    fill: var(--accent-primary);
+    fill: #22d3ee;
 }
 
 body.dark .particle {
-    background-color: var(--accent-primary);
+    background-color: #22d3ee;
 }
 
 /* Light Theme */
@@ -65,15 +65,15 @@ body.light {
 }
 
 body.light .circuit-path {
-    stroke: var(--accent-primary);
+    stroke: #f97316;
 }
 
 body.light .circuit-node {
-    fill: var(--accent-secondary);
+    fill: #ea580c;
 }
 
 body.light .particle {
-    background-color: var(--accent-primary);
+    background-color: #f97316;
 }
 
 /* Smooth theme transitions */

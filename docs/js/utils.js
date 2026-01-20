@@ -25,7 +25,7 @@ function createParticles() {
 function updateCircuitColors(theme) {
     const paths = document.querySelectorAll('.circuit-path');
     const nodes = document.querySelectorAll('.circuit-node');
-    const color = theme === 'dark' ? '#f97316' : '#3b82f6';
+    const color = theme === 'dark' ? '#d28b08' : '#064bbb';
     
     paths.forEach(path => path.setAttribute('stroke', color));
     nodes.forEach(node => node.setAttribute('fill', color));
