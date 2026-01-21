@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'CS notes'
+project = 'Niccolò Quadrani\'s Blog'
 copyright = '2025, Niccolò Quadrani'
 author = 'Niccolò Quadrani'
 release = '1.0'
