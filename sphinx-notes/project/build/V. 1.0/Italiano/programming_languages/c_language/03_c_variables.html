@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Variabili e Memoria in C &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
+    <title>Variabili locali e Memoria in C &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
   
   
   
@@ -48,6 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/03_c_variables';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Variabili statiche e globali e variabili nelle funzioni" href="04_c_variables_2.html" />
     <link rel="prev" title="Funzioni in C" href="02_c_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,7 +159,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Introduzione al C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">Compilatore C e Hello World</a></li>
 <li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Funzioni in C</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Variabili e Memoria in C</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Variabili locali e Memoria in C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_c_variables_2.html">Variabili statiche e globali e variabili nelle funzioni</a></li>
 </ul>
 </details></li>
 </ul>
@@ -301,7 +303,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variabili e Memoria in C</h1>
+    <h1>Variabili locali e Memoria in C</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -311,7 +313,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili">Variabili</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili-locali">Variabili locali</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-delle-variabili">Scope delle variabili</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argomenti-vs-parametri">Argomenti vs Parametri</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciclo-di-vita-delle-variabili-locali">Ciclo di vita delle variabili locali</a></li>
@@ -347,10 +349,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="variabili-e-memoria-in-c">
-<h1>Variabili e Memoria in C<a class="headerlink" href="#variabili-e-memoria-in-c" title="Link to this heading">#</a></h1>
-<section id="variabili">
-<h2>Variabili<a class="headerlink" href="#variabili" title="Link to this heading">#</a></h2>
+  <section id="variabili-locali-e-memoria-in-c">
+<h1>Variabili locali e Memoria in C<a class="headerlink" href="#variabili-locali-e-memoria-in-c" title="Link to this heading">#</a></h1>
+<section id="variabili-locali">
+<h2>Variabili locali<a class="headerlink" href="#variabili-locali" title="Link to this heading">#</a></h2>
 <p>Le variabili sono delle celle di memoria alle quali noi “andiamo a dare un nome” per poi poterci salvare dei dati specifici.</p>
 <p>Possiamo vederle come delle piccole scatole all’interno della nostra memoria al cui interno possiamo andare ad inserire i dati che vogliamo salvare in quel momento.</p>
 <p>Proviamo a scrivere un programma che fa la somma di due numeri usando delle variabili locali all’interno del main.</p>
@@ -1108,6 +1110,15 @@ ___\\ \\     // //___
         <p class="prev-next-title">Funzioni in C</p>
       </div>
     </a>
+    <a class="right-next"
+       href="04_c_variables_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variabili statiche e globali e variabili nelle funzioni</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1124,7 +1135,7 @@ ___\\ \\     // //___
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili">Variabili</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili-locali">Variabili locali</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-delle-variabili">Scope delle variabili</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argomenti-vs-parametri">Argomenti vs Parametri</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciclo-di-vita-delle-variabili-locali">Ciclo di vita delle variabili locali</a></li>

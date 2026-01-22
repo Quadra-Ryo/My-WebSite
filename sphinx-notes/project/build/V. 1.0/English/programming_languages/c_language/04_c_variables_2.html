@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Funzioni in C &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
+    <title>Static and Global Variables and Variables in Functions &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
   
   
   
@@ -45,11 +45,10 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/02_c_functions';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/04_c_variables_2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Variabili locali e Memoria in C" href="03_c_variables.html" />
-    <link rel="prev" title="Compilatore C e Hello World" href="01_c_compiler.html" />
+    <link rel="prev" title="Local variables and Memory in C" href="03_c_variables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,14 +152,14 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Indice</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Linguaggi di Programmazione</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Introduzione al C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">Compilatore C e Hello World</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Funzioni in C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_c_variables.html">Variabili locali e Memoria in C</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_c_variables_2.html">Variabili statiche e globali e variabili nelle funzioni</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Programming Languages</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Introduction to C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">C Compiler and Hello World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Functions in C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_c_variables.html">Local variables and Memory in C</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Static and Global Variables and Variables in Functions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -219,7 +218,7 @@
       
       
       
-      <li><a href="../../_sources/programming_languages/c_language/02_c_functions.md" target="_blank"
+      <li><a href="../../_sources/programming_languages/c_language/04_c_variables_2.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +302,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Funzioni in C</h1>
+    <h1>Static and Global Variables and Variables in Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -313,9 +312,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dichiarazione-di-una-funzione">Dichiarazione di una funzione</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printf">Printf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-global-and-static-variables">Introduction to Global and Static Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables">Global Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-variables">Static Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-static-and-global-variables">Problems with Static and Global Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-values-after-a-function-call">Managing Values After a Function Call</a></li>
 </ul>
             </nav>
         </div>
@@ -327,111 +328,147 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="funzioni-in-c">
-<h1>Funzioni in C<a class="headerlink" href="#funzioni-in-c" title="Link to this heading">#</a></h1>
-<p>In C, una funzione è un blocco di codice che esegue un compito specifico e può restituire un valore.<br />
-Serve a organizzare il programma, evitare duplicazioni e rendere il codice più leggibile e manutenibile.</p>
-<section id="dichiarazione-di-una-funzione">
-<h2>Dichiarazione di una funzione<a class="headerlink" href="#dichiarazione-di-una-funzione" title="Link to this heading">#</a></h2>
-<p>Prendiamo come esempio il codice che siamo andati a scrivere nelle pagine di documentazione precedenti ed andiamo ad analizzare la funzione che abbiamo scritto, il main:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+  <section id="static-and-global-variables-and-variables-in-functions">
+<h1>Static and Global Variables and Variables in Functions<a class="headerlink" href="#static-and-global-variables-and-variables-in-functions" title="Link to this heading">#</a></h1>
+<section id="introduction-to-global-and-static-variables">
+<h2>Introduction to Global and Static Variables<a class="headerlink" href="#introduction-to-global-and-static-variables" title="Link to this heading">#</a></h2>
+<p>Let’s take an example program called <code class="docutils literal notranslate"><span class="pre">increment</span></code> and make it so that it takes nothing as input, increments a variable, and prints its value.</p>
+<div class="info sd-bg-info sd-text-white admonition">
+<p class="admonition-title">INFO</p>
+<p>In the jargon of imperative languages (An imperative language is a programming paradigm in which code describes how to achieve a result through a sequence of instructions that modify the program’s state), we say that the <code class="docutils literal notranslate"><span class="pre">increment</span></code> function has only a side effect (a collateral effect, which is to print the value of x).
+In other words, it takes no input values, returns nothing, the only value is the effect that occurs during the function’s execution itself.</p>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// In C the &quot;=&quot; symbol assigns to the left variable the value on the right</span>
+<span class="w">               </span><span class="c1">// To check if two variables are equal we use &quot;==&quot;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Iniziamo andando a vedere come viene definita una funzione:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code></p></li>
-<li><p>Si aprono le parentesi graffe</p></li>
-<li><p>Si scrive il blocco di codice che si vuole eseguire</p></li>
-<li><p>Si chiudono le parentesi graffe</p></li>
-</ul>
-<p>Andiamo a spezzettare questa definizione per capirla meglio.<br />
-Iniziamo con la riga <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code>:</p>
-<ul class="simple">
-<li><p>Possiamo vedere la key word <code class="docutils literal notranslate"><span class="pre">int</span></code>, questa keyword definisce il tipo di ritorno del valore ritornato dalla funzione stessa. Questo valore deve essere presente e deve essere posizionato prima del nome della funzione.</p></li>
-<li><p>Poi possiamo trovare il nome della funzione, in questo caso <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
-<li><p>Infine tra parentesi tonde troviamo la lista di argomenti che la funzione vuole in input, in questo caso <code class="docutils literal notranslate"><span class="pre">(void)</span></code> cioè la funzione non richiede nessun argomento per venire eseguita.</p></li>
-</ul>
-<div class="info sd-bg-info sd-text-white admonition">
-<p class="admonition-title">INFO</p>
-<p>Si possono anche lasciare due parentesi vuote <code class="docutils literal notranslate"><span class="pre">main()</span></code> in quanto i nuovi compilatori di C più moderni lo accettano e lo interpretano correttamente ma nei compilatori più vecchi questo risulterebbe in un errore e per questo è una buona prassi inserire <code class="docutils literal notranslate"><span class="pre">void</span></code> all’interno delle parentesi in caso non ci siano parametri da passare.</p>
-</div>
-<p>Andiamo a fare un esempio con una funzione diversa:</p>
-<div class="info sd-bg-info sd-text-white admonition">
-<p class="admonition-title">INFO</p>
-<p>Una buona prassi è quella di scrivere tutto il codice in inglese, nomi di variabili, di funzioni e commenti.</p>
-</div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<p>If we execute this program we will see that it will print “2” three times, not taking into account the number of calls executed.
+This is because at each function call the variable x will be created locally, its value will be incremented and subsequently, at the end of the function’s execution, it will be destroyed (as we saw in the <a class="reference external" href="https://quadra-ryo.github.io/My-WebSite/blog/V.%201.0/English/programming_languages/c_language/03_c_variables.html">previous lesson</a>).</p>
+</section>
+<section id="global-variables">
+<h2>Global Variables<a class="headerlink" href="#global-variables" title="Link to this heading">#</a></h2>
+<p>Let’s now make a small modification to our code to make our variable <code class="docutils literal notranslate"><span class="pre">x</span></code> global.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// By declaring a variable outside a function it will have global scope</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Andiamo ad analizzare la seguente funzione:</p>
-<ul class="simple">
-<li><p>Possiamo notare che la funzione somma (sum) ritorna un valore di tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> (Il valore int è un numero intero, i vari tipi di dato verranno trattati nelle pagine di documentazione a venire)</p></li>
-<li><p>Possiamo anche notare che ha bisogno di due parametri distinti, entrambi di tipo intero, di nome <code class="docutils literal notranslate"><span class="pre">num1</span></code> e <code class="docutils literal notranslate"><span class="pre">num2</span></code> (Questi sono i nomi con i quali si possono richiamare i valori passati alla funzione all’interno della funzione stessa)</p></li>
-<li><p>Ritorna il valore ottenuto dall’espressione <code class="docutils literal notranslate"><span class="pre">num1</span> <span class="pre">+</span> <span class="pre">num2</span></code>, una volta eseguito lo statement <code class="docutils literal notranslate"><span class="pre">return</span></code> la funzione smetterà di essere eseguita e tornerà immediatamente il valore scelto alla funzione richiamante. Ovviamente il tipo del valore di ritorno dovrà essere uguale a quello dichiarato prima del nome della funzione ma in questo caso non c’è problemi visto che la funzione ritorna effettivamente un numero intero (int + int = int, funzione ben tipata).</p></li>
-</ul>
-<p>Adesso andiamo a richiamare la nostra funzione all’interno del main per controllare che funzioni tutto. Per fare questo possiamo stampare il risultato ritornato dalla funzione stessa con un <code class="docutils literal notranslate"><span class="pre">printf(&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d\n&quot;,</span> <span class="pre">sum(3,4));</span></code> ottenendo il seguente codice:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The operation: 3 + 4 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<p>Since now inside the increment function there is no local variable with the name <code class="docutils literal notranslate"><span class="pre">x</span></code>, the compiler will search for the variable among the global variables and will find the global variable.
+The main difference between a local and a global variable is that in the case of a global variable, the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> will never be reset. The variable will be created at the beginning of the program’s execution and will be destroyed only at the end of the program, when the process terminates.
+Besides this, by creating the variable with global scope we will make the variable accessible in all parts of the program, not only in the function where it is declared but in all functions present within our code (this is why I can put the print inside main).
+For this reason the program will always increment the same variable and thus by executing the program I will read “2 3 4” and not “2 2 2” anymore.</p>
+<p>Let’s simulate the program’s execution and the change of <code class="docutils literal notranslate"><span class="pre">x</span></code>’s value during the execution of our main:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Program start:  
+X → [1]  
+increment()  
+X → [X+1] (1 + 1)  
+X → [2]  
+printf(x) -&gt; 2  
+increment()  
+X → [X+1] (2 + 1)  
+X → [3]  
+printf(x) -&gt; 3  
+increment()  
+X → [X+1] (3 + 1)  
+X → [4]  
+printf(x) -&gt; 4 
 </pre></div>
 </div>
 </section>
-<section id="printf">
-<h2>Printf<a class="headerlink" href="#printf" title="Link to this heading">#</a></h2>
-<p>Approfondiamo un po’ la funzione che andiamo ad utilizzare e il modo in cui abbiamo scritto la chiamata alla funzione stessa.</p>
-<p>Iniziamo con il dire che il nome della funzione è una abbreviazione di <strong>“print formatted”</strong>, cioè una funzione che può essere formattata in un modo specifico in base alle nostre esigenze.<br />
-in questo caso noi avremo all’interno della stringa passata alla funzione (<code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d\n&quot;</span></code>) due parti fondamentali:</p>
-<ul class="simple">
-<li><p>Una parte di “formato”</p></li>
-<li><p>Un identificatore (In questo caso <code class="docutils literal notranslate"><span class="pre">%d</span></code>)</p></li>
-</ul>
-<p>La parte di formato è la parte “statica” come ad esempio “The operation: 3 + 4 = … \n”, questa parte verrà stampata esattamente come è scritta.<br />
-La parte invece preceduta dal simbolo <code class="docutils literal notranslate"><span class="pre">%</span></code> è chiamata identificatore e serve a dire che in quella posizione lì ci sarà un valore di una variabile, nel caso di <code class="docutils literal notranslate"><span class="pre">%d</span></code> questa variabile sarà di tipo intero (Infatti la nostra funzione ritorna un <code class="docutils literal notranslate"><span class="pre">int</span></code>).</p>
-<p>Dopo la stringa possiamo vedere che si passa un altro argomento: <code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">sum(3,4)</span></code> che è il valore che vogliamo andare a sovrascrivere sopra al nostro identificatore.</p>
-<p>Nella lezione precedente abbiamo visto come la dichiarazione della funzione <code class="docutils literal notranslate"><span class="pre">printf</span></code> sia <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">printf(const</span> <span class="pre">char</span> <span class="pre">*</span> <span class="pre">restrict</span> <span class="pre">format,</span> <span class="pre">...);</span></code>, adesso possiamo capire più chiaramente quale sia il significato di quei puntini presenti alla fine della dichiarazione della funzione, servono a simboleggiare che la funzione ha un numero di parametri variabili in funzione del numero di identificatori presenti all’interno della stringa (Funzioni di questo tipo vengono chiamate <strong>funzioni variadiche</strong>).</p>
-<p>Nel caso si faccia un errore del tipo <code class="docutils literal notranslate"><span class="pre">printf(&quot;The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">%d,</span> <span class="pre">%d\n&quot;,</span> <span class="pre">sum(3,4));</span></code> (Inserire due identificatori ma un solo valore da andare a sostituire) il codice compilerà correttamente anche se genererà un warning (In caso non lo vediate provate a compilare utilizzando il comando <code class="docutils literal notranslate"><span class="pre">cc</span> <span class="pre">-W</span> <span class="pre">-Wall</span> <span class="pre">main.c</span></code>), questo perché questo errore porta a comportamento indefinito, il valore sovrascritto al secondo identificatore potrebbe essere qualsiasi cosa e potrebbe anche causare il crash del programma stesso.<br />
-Infatti se voi provaste a lanciare la funzione come scritto sopra molto probabilmente ricevereste in output una stringa diversa dalla mia: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">operation:</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">7,</span> <span class="pre">-1836453600</span></code></p>
-</section>
-<section id="main">
-<h2>Main<a class="headerlink" href="#main" title="Link to this heading">#</a></h2>
-<p>La funzione <strong>Main</strong> invece è una funzione speciale, come avete potuto vedere per richiamare la funzione sum che abbiamo scritto abbiamo dovuto fare una chiamata esplicita (richiamarla con <code class="docutils literal notranslate"><span class="pre">sum(3,4)</span></code>) ma il main non viene mai richiamato.
-Questo perché la funzione main è una funzione speciale, è il punto di partenza di ogni programma, quando un programma viene lanciato il codice che viene eseguito è in realtà quello all’interno della funzione main stessa.<br />
-Questo implica che in C non può essere scritto codice in uno scope globale all’esterno di una funzione (come accade in python per esempio) e che ogni programma dovrà necessariamente avere una funzione di nome main.</p>
-<p>Errore! ❌:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<section id="static-variables">
+<h2>Static Variables<a class="headerlink" href="#static-variables" title="Link to this heading">#</a></h2>
+<p>Another way to declare a variable in C is using <code class="docutils literal notranslate"><span class="pre">static</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Static</span></code> is a keyword that allows us to create a variable that can be imagined as a middle ground between a local and a global variable.
+Static variables are declared inside a function and therefore are visible and accessible only from that function (unlike global variables which are accessible from the entire program) but have a static storage duration like global variables.</p>
+<p>Let’s see a practical example:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// The variable is initialized only the first time</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 2</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 3</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 4</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Errore! ❌:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<p>In this case the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> is initialized only at the first function call. In subsequent calls it maintains the previous value, but remains accessible only within the <code class="docutils literal notranslate"><span class="pre">increment</span></code> function.</p>
+</section>
+<section id="problems-with-static-and-global-variables">
+<h2>Problems with Static and Global Variables<a class="headerlink" href="#problems-with-static-and-global-variables" title="Link to this heading">#</a></h2>
+<p>Since global variables are accessible from the entire program, this property leads us to have possible problems.
+We mainly talk about problems with threading, more precisely when two separate threads (processes) try to access and work on the same global variable simultaneously.
+This case could lead to a synchronization problem that we will study soon. Static variables, being accessible only from their function, have fewer problems of this type, but can still cause issues if the same function is called from different threads.</p>
+</section>
+<section id="managing-values-after-a-function-call">
+<h2>Managing Values After a Function Call<a class="headerlink" href="#managing-values-after-a-function-call" title="Link to this heading">#</a></h2>
+<p>Let’s now slightly modify our increment function so that by taking an integer as input it returns the input value +1.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">){</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">){</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
+<span class="w">    </span><span class="n">increment</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Appurato che la funzione “speciale” main deve essere presente all’interno del codice possiamo notare che la funzione ritorna un intero e che di default noi abbiamo scritto <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">0</span></code>.<br />
-Pur sembrando strano in quanto la funzione main non viene richiamata da nessuna parte all’interno del programma il valore di ritorno del main è fondamentale per segnalare al sistema operativo se il nostro programma ha avuto un esito positivo o negativo.<br />
-Per convenzione (Unix) un programma “main” viene considerato eseguito senza errori quando il valore di ritorno è 0, in ogni altro caso vengono usati valori specifici per simboleggiare errori diversi.<br />
-Oltre a questo in caso dei programmi vengano richiamati in modo concatenato utilizzando un and logico in questo modo <code class="docutils literal notranslate"><span class="pre">./a.exe</span> <span class="pre">&amp;&amp;</span> <span class="pre">ls</span></code> questo comando andrà ad eseguire entrambi i comandi distinti solo se il primo programma non incontra un errore, in caso a.exe ritornasse un numero diverso da 0 infatti il comando ls non verrebbe eseguito (Questo perché grazie ad un meccanismo di <strong>short circuit</strong> sapendo che basta un’espressione falsa per fare sì che l’and logico tra due espressioni ritorni falso il secondo comando non viene nemmeno eseguito in quanto il suo esito non potrebbe andare comunque ad influenzare il ritorno dell’espressione) così facendo possiamo essere certi che al primo errore trovato il mio programma si blocchi senza andare avanti.</p>
+<p>What would happen if we ran this main? What would be printed by the program?
+If your answer was “13” you’re right! Let’s see why:
+When we call the <code class="docutils literal notranslate"><span class="pre">increment</span></code> function passing <code class="docutils literal notranslate"><span class="pre">num</span></code> as a parameter, we are not passing the variable <code class="docutils literal notranslate"><span class="pre">num</span></code> but we are simply assigning to <code class="docutils literal notranslate"><span class="pre">x</span></code> (the argument of the increment function) the value contained within <code class="docutils literal notranslate"><span class="pre">num</span></code>.
+So what happens is that inside our increment function we will increment <code class="docutils literal notranslate"><span class="pre">x</span></code> which will reach the value of “14” but we will never save it inside main and therefore the value of num will remain “13”.
+This is because in C normally function arguments are passed by value and not by reference (functions receive a copy of the value that is inside the variable I pass as a parameter but it will not be the same memory cell as the variable passed as a parameter).</p>
+<p>To obtain the desired effect we must save the return value of the function:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
+<span class="w">    </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">increment</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"> </span><span class="c1">// I assign to num the value returned by the function</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w">  </span><span class="c1">// Prints 14</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In C all values (even the more complex ones like structures that we will see in the future) are passed <strong>by copy</strong>. The only way to modify the value of the variable passed as a parameter would be to pass the parameter as a <strong>pointer</strong> but we will see this soon.</p>
 <br>
 <!-- Versions and languages set-up -->
 <style>
@@ -547,7 +584,7 @@ Oltre a questo in caso dei programmi vengano richiamati in modo concatenato util
   <div class="dropdown">
     <div class="dropdown-toggle" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
       <span class="fa fa-globe" aria-hidden="true"></span>
-      Language: <span class="current-value">Italiano</span>
+      Language: <span class="current-value">English</span>
       <span class="fa caret-icon fa-caret-down" aria-hidden="true"></span>
     </div>
     <div class="dropdown-menu" role="listbox">
@@ -709,22 +746,13 @@ ___\\ \\     // //___
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01_c_compiler.html"
+       href="03_c_variables.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Compilatore C e Hello World</p>
+        <p class="prev-next-title">Local variables and Memory in C</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="03_c_variables.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Variabili locali e Memoria in C</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -742,9 +770,11 @@ ___\\ \\     // //___
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dichiarazione-di-una-funzione">Dichiarazione di una funzione</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printf">Printf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">Main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-global-and-static-variables">Introduction to Global and Static Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables">Global Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-variables">Static Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problems-with-static-and-global-variables">Problems with Static and Global Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-values-after-a-function-call">Managing Values After a Function Call</a></li>
 </ul>
   </nav></div>
 
