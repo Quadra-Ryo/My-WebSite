@@ -26,17 +26,17 @@ Iniziamo con la riga `int main(void)`:
 - Poi possiamo trovare il nome della funzione, in questo caso `main`
 - Infine tra parentesi tonde troviamo la lista di argomenti che la funzione vuole in input, in questo caso `(void)` cioè la funzione non richiede nessun argomento per venire eseguita. 
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 Si possono anche lasciare due parentesi vuote `main()` in quanto i nuovi compilatori di C più moderni lo accettano e lo interpretano correttamente ma nei compilatori più vecchi questo risulterebbe in un errore e per questo è una buona prassi inserire `void` all'interno delle parentesi in caso non ci siano parametri da passare.
-:::
+```
 
 Andiamo a fare un esempio con una funzione diversa:
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 Una buona prassi è quella di scrivere tutto il codice in inglese, nomi di variabili, di funzioni e commenti.
-:::
+```
 
 ```c
 int sum(int num1, int num2){

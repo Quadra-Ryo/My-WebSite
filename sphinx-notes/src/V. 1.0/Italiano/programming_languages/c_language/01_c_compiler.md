@@ -98,10 +98,10 @@ int main(void){
 }
 ```
 
-:::{admonition} ERRORE DEL COMPILATORE
-:class: error, sd-bg-danger sd-text-white
+```{warning}
+**COMPILER ERROR**  
 main.c:2:5: error: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-:::
+```
 
 L'errore ci sta dicendo che all'interno del nostro file `main.c` alla riga 2, colonna 5 è stata trovata una dichiarazione implicita di una funzione di nome `printf` questo perchè il compilatore non riesce a capire che argomenti e il tipo di ritorno corretti per la funzione che trova.  
 Adesso, invece di includere di nuovo il file header, proviamo ad andare ad includere la dichiarazione che si trova all'interno della documentazione ufficiale della funzione all'interno del file.  
@@ -187,9 +187,9 @@ int main(void){
 **Compilazione**: Ok (il compilatore conosce il prototipo)  
 **Linking**: Errore
 
-:::{admonition} ERRORE DEL COMPILATORE (Dato dal linker)
-:class: error, sd-bg-danger sd-text-white
+```{warning}
+**COMPILER ERROR (Given by the linker)**  
 undefined reference to `funzione_inesistente'
-:::
+```
 
 Il linker non riesce a trovare il codice della funzione in nessuna libreria e quindi produce un errore.

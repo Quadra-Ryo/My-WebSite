@@ -26,17 +26,17 @@ Let's start with the line `int main(void)`:
 - Then we can find the function name, in this case `main`
 - Finally, within parentheses we find the list of arguments that the function requires as input, in this case `(void)` meaning the function doesn't require any arguments to be executed. 
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 You can also leave two empty parentheses `main()` as newer, more modern C compilers accept and interpret it correctly, but in older compilers this would result in an error, which is why it's good practice to insert `void` inside the parentheses when there are no parameters to pass.
-:::
+```
 
 Let's make an example with a different function:
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 A good practice is to write all code in English: variable names, function names, and comments.
-:::
+```
 
 ```c
 int sum(int num1, int num2){

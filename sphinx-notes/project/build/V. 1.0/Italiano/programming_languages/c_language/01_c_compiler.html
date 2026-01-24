@@ -417,9 +417,10 @@ Infatti i file C possono avere due estenzioni <code class="docutils literal notr
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="error sd-bg-danger sd-text-white admonition">
-<p class="admonition-title">ERRORE DEL COMPILATORE</p>
-<p>main.c:2:5: error: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>COMPILER ERROR</strong><br />
+main.c:2:5: error: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</p>
 </div>
 <p>L’errore ci sta dicendo che all’interno del nostro file <code class="docutils literal notranslate"><span class="pre">main.c</span></code> alla riga 2, colonna 5 è stata trovata una dichiarazione implicita di una funzione di nome <code class="docutils literal notranslate"><span class="pre">printf</span></code> questo perchè il compilatore non riesce a capire che argomenti e il tipo di ritorno corretti per la funzione che trova.<br />
 Adesso, invece di includere di nuovo il file header, proviamo ad andare ad includere la dichiarazione che si trova all’interno della documentazione ufficiale della funzione all’interno del file.</p>
@@ -506,9 +507,10 @@ Eseguibile finale (a.out o a.exe)
 </div>
 <p><strong>Compilazione</strong>: Ok (il compilatore conosce il prototipo)<br />
 <strong>Linking</strong>: Errore</p>
-<div class="error sd-bg-danger sd-text-white admonition">
-<p class="admonition-title">ERRORE DEL COMPILATORE (Dato dal linker)</p>
-<p>undefined reference to `funzione_inesistente’</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>COMPILER ERROR (Given by the linker)</strong><br />
+undefined reference to `funzione_inesistente’</p>
 </div>
 <p>Il linker non riesce a trovare il codice della funzione in nessuna libreria e quindi produce un errore.</p>
 <br>

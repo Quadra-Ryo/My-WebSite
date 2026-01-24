@@ -91,10 +91,10 @@ int main(void){
 }
 ```
 
-:::{admonition} COMPILER ERROR
-:class: error, sd-bg-danger sd-text-white
+```{warning}
+**COMPILER ERROR**
 main.c:2:5: error: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-:::
+```
 
 The error is telling us that inside our `main.c` file at line 2, column 5 an implicit declaration of a function named `printf` was found. This is because the compiler cannot understand the correct arguments and return type for the function it finds.
 Now, instead of including the header file again, let's try to include the declaration that is found in the official documentation of the function inside the file.
@@ -179,9 +179,9 @@ int main(void){
 **Compilation**: Ok (the compiler knows the prototype)  
 **Linking**: Error
 
-:::{admonition} COMPILER ERROR (Given by the linker)
-:class: error, sd-bg-danger sd-text-white
+```{warning}
+**COMPILER ERROR (Given by the linker)**  
 undefined reference to `non_existent_function'
-:::
+```
 
 The linker cannot find the function code in any library and therefore produces an error.

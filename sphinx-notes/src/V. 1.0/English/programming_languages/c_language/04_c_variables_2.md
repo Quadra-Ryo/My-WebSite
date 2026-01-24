@@ -3,11 +3,11 @@
 ## Introduction to Global and Static Variables
 Let's take an example program called `increment` and make it so that it takes nothing as input, increments a variable, and prints its value.
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 In the jargon of imperative languages (An imperative language is a programming paradigm in which code describes how to achieve a result through a sequence of instructions that modify the program's state), we say that the `increment` function has only a side effect (a collateral effect, which is to print the value of x).
 In other words, it takes no input values, returns nothing, the only value is the effect that occurs during the function's execution itself.
-:::
+```
 
 ```C
 #include <stdio.h>

@@ -3,11 +3,11 @@
 ## Introduzione alle variabili globali e statiche
 Andiamo a prendere un programma di esempio chiamato `increment` e facciamo si che non prenda nulla in input, incrementi una variabile e che stampi il suo valore.  
 
-:::{admonition} INFO
-:class: info, sd-bg-info sd-text-white
+```{note}
+**INFO**  
 Nel gergo dei linguaggi imperativi (Un linguaggio imperativo è un paradigma di programmazione in cui il codice descrive come raggiungere un risultato attraverso una sequenza di istruzioni che modificano lo stato del programma) si dice che la funzione `increment` abbia solo un side effect (un effetto collaterale, cioè quello di stampare il valore di x).  
 In poche parole non prende valori in input, non ritorna nulla, l'unico valore è l'effetto che si ha nell'esecuzione della funzione stessa.
-:::
+```
 
 ```C
 #include <stdio.h>
