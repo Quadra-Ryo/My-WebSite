@@ -1,0 +1,31 @@
+        } else if (section === 'career') {
+            const companyHTML = item.companyUrl 
+                ? `<a href="${item.companyUrl}" target="_blank" rel="noopener noreferrer" class="company-link">${item.company}</a>`
+                : item.company;
+            
+            // Calculate duration
+            const duration = parsePeriodDuration(item.period);
+            const durationHTML = duration ? ` • <span class="duration">${duration}</span>` : '';
+            
+            const robotsHTML = item.robots ? `
+                <details class="robots-dropdown">
+                    <summary class="robots-summary">🤖 ${translations.robotsWorkedWith}</summary>
+                    <div class="robots-list">
+                        ${item.robots.map(robot => `
+                            <div class="robot-item">
+                                <span class="robot-brand">${robot.brand}</span>
+                                <span class="robot-tech">${robot.tech}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </details>
+            ` : '';
+            
+            return `
+                <div class="item">
+                    <h3>${item.role}</h3>
+                    <p class="meta">${companyHTML} • ${item.period}${durationHTML}</p>
+                    <p class="description">${item.description}</p>
+                    ${robotsHTML}
+                </div>
+            `;

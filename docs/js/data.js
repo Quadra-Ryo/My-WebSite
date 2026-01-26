@@ -42,7 +42,7 @@ const portfolioData = {
                 role: 'Embedded Software Developer',
                 company: 'New Generation Sensors',
                 companyUrl: 'https://www.linkedin.com/company/new-generation-sensors-srl/posts/?feedView=all',
-                period: '06/2022 - 05/2023',
+                period: '06/2022 - 06/2023',
                 description: 'Sviluppo software per microcontrollori (NRF520K) in <span class="highlight">C</span>. Sviluppo REST API con <span class="highlight">Python (FastAPI)</span> e <span class="highlight">Docker</span>. Partecipazione a studio e progettazione di <span class="highlight">Blockchain</span> proprietaria. Partecipazione al progetto europeo <span class="highlight">Horizon 2020</span>.'
             }
         ],
@@ -204,7 +204,7 @@ const portfolioData = {
                 role: 'Embedded Software Developer',
                 company: 'New Generation Sensors',
                 companyUrl: 'https://www.linkedin.com/company/new-generation-sensors-srl/posts/?feedView=all',
-                period: '06/2022 - 05/2023',
+                period: '06/2022 - 06/2023',
                 description: 'Microcontroller software development (NRF520K) in <span class="highlight">C</span>. REST API development with <span class="highlight">Python (FastAPI)</span> and <span class="highlight">Docker</span>. Participation in proprietary <span class="highlight">Blockchain</span> study and design. Participation in European <span class="highlight">Horizon 2020</span> project.'
             }
         ],

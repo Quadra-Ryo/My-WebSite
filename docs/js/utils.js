@@ -51,6 +51,81 @@ function updateCircuitColors(theme) {
 }
 
 /**
+ * Calculate duration between two dates in years and months
+ * @param {string} startDate - Start date in format MM/YYYY
+ * @param {string} endDate - End date in format MM/YYYY or 'Presente'/'Present'
+ * @returns {string} Duration string (e.g., "1 anno e 5 mesi")
+ */
+function calculateDuration(startDate, endDate) {
+    const lang = getCurrentLanguage();
+    
+    // Parse start date
+    const [startMonth, startYear] = startDate.split('/').map(Number);
+    const start = new Date(startYear, startMonth - 1);
+    
+    // Parse end date (current date if "Presente"/"Present")
+    let end;
+    if (endDate === 'Presente' || endDate === 'Present') {
+        end = new Date();
+    } else {
+        const [endMonth, endYear] = endDate.split('/').map(Number);
+        end = new Date(endYear, endMonth - 1);
+    }
+    
+    // Calculate difference
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    
+    // Adjust if months is negative
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+    
+    // Format duration string
+    const parts = [];
+    
+    if (years > 0) {
+        if (lang === 'it') {
+            parts.push(years === 1 ? '1 anno' : `${years} anni`);
+        } else {
+            parts.push(years === 1 ? '1 year' : `${years} years`);
+        }
+    }
+    
+    if (months > 0) {
+        if (lang === 'it') {
+            parts.push(months === 1 ? '1 mese' : `${months} mesi`);
+        } else {
+            parts.push(months === 1 ? '1 month' : `${months} months`);
+        }
+    }
+    
+    // If less than a month
+    if (parts.length === 0) {
+        return lang === 'it' ? 'Meno di un mese' : 'Less than a month';
+    }
+    
+    return parts.join(lang === 'it' ? ' e ' : ' and ');
+}
+
+/**
+ * Parse period string and calculate duration
+ * @param {string} period - Period string in format "MM/YYYY - MM/YYYY" or "MM/YYYY - Presente"
+ * @returns {string} Duration string or empty if can't parse
+ */
+function parsePeriodDuration(period) {
+    // Match pattern: MM/YYYY - MM/YYYY or MM/YYYY - Presente/Present
+    const match = period.match(/(\d{2}\/\d{4})\s*-\s*(.+)/);
+    if (!match) return '';
+    
+    const startDate = match[1];
+    const endDate = match[2].trim();
+    
+    return calculateDuration(startDate, endDate);
+}
+
+/**
  * Render about section
  * @param {Object} aboutData - About section data
  */
@@ -224,6 +299,10 @@ function renderSection(section, items) {
                 ? `<a href="${item.companyUrl}" target="_blank" rel="noopener noreferrer" class="company-link">${item.company}</a>`
                 : item.company;
             
+            // Calculate duration
+            const duration = parsePeriodDuration(item.period);
+            const durationHTML = duration ? ` • <span class="duration">${duration}</span>` : '';
+            
             const robotsHTML = item.robots ? `
                 <details class="robots-dropdown">
                     <summary class="robots-summary">🤖 ${translations.robotsWorkedWith}</summary>
@@ -241,7 +320,7 @@ function renderSection(section, items) {
             return `
                 <div class="item">
                     <h3>${item.role}</h3>
-                    <p class="meta">${companyHTML} • ${item.period}</p>
+                    <p class="meta">${companyHTML} • ${item.period}${durationHTML}</p>
                     <p class="description">${item.description}</p>
                     ${robotsHTML}
                 </div>
