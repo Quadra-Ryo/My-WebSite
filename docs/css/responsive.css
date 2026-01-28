@@ -105,9 +105,12 @@
         transform: none;
     }
     
+    /* Effetto hover disabilitato anche per mobile */
+    /*
     .profile-wrapper:hover .profile-glow {
         filter: blur(40px);
     }
+    */
 }
 
 /* Reduced Motion */

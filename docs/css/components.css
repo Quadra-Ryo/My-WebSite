@@ -94,9 +94,12 @@ body.light .btn:hover {
     transition: all var(--transition-slow);
 }
 
+/* Effetto hover sul glow disabilitato */
+/*
 .profile-wrapper:hover .profile-glow {
     filter: blur(60px);
 }
+*/
 
 .profile {
     position: relative;
@@ -1092,9 +1095,12 @@ body.light .career-item:hover {
     }
 }
 
+/* Animazione pulse-glow sull'hover disabilitata */
+/*
 .profile:hover {
     animation: pulse-glow 2s ease-in-out infinite;
 }
+*/
 
 /* Smooth scroll behavior */
 html {
