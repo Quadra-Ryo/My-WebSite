@@ -35,5 +35,6 @@ Even though it is "old," C remains the backbone of modern computing. It is the l
 02_c_functions.md
 03_c_variables.md
 04_c_variables_2.md
+05_c_data_types.md
 
 ```

@@ -34,5 +34,6 @@ Studiare il C non significa solo imparare un linguaggio, ma capire **come funzio
 02_c_functions.md
 03_c_variables.md
 04_c_variables_2.md
+05_c_data_types.md
 
 ```

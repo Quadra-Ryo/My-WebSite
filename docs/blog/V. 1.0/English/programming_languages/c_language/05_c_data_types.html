@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Variable Types &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/05_c_data_types';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Static and Global Variables and Variables in Functions" href="04_c_variables_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Niccolò Quadrani's Blog 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Index</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Programming Languages</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">C Language</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">Compiler and Hello World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_c_variables.html">Local variables and Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_c_variables_2.html">Static and Global Variables and Variables in Functions</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Variable Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/programming_languages/c_language/05_c_data_types.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variable Types</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-variable-types">Introduction to Variable Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-solve-it-sizeof-function">How to Solve It (sizeof function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-limits-h">Including limits.h</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-on-modern-32-bit-and-64-bit-systems">Variables on Modern 32-bit and 64-bit Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-types">Special Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-long-type">The long Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-double">Long Double</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-types">Advanced Types</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="variable-types">
+<h1>Variable Types<a class="headerlink" href="#variable-types" title="Link to this heading">#</a></h1>
+<section id="introduction-to-variable-types">
+<h2>Introduction to Variable Types<a class="headerlink" href="#introduction-to-variable-types" title="Link to this heading">#</a></h2>
+<p>Since the C language was designed to run on every type of machine, from microcontrollers to supercomputers, many versions of C exist to allow the language to run on any machine.<br />
+For this reason, C — unlike other languages such as Python and Java — does not have a standard size for its variables.<br />
+Take the <code class="docutils literal notranslate"><span class="pre">int</span></code> type as an example. In languages like Java, <code class="docutils literal notranslate"><span class="pre">int</span></code> has a standard length of 32 bits (4 bytes) and can hold values ranging from <code class="docutils literal notranslate"><span class="pre">-2,147,483,648</span></code> to <code class="docutils literal notranslate"><span class="pre">2,147,483,647</span></code>. In C we have no such guarantee; we can never be certain of the actual size in memory of a variable.<br />
+The only certainty we have regardless of the C version or the machine we are using is the <code class="docutils literal notranslate"><span class="pre">unsigned</span></code> qualifier (e.g. <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code>), which forces our numbers to be unsigned, removing the ability to represent negative numbers but doubling the range of positive numbers (for <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code> the range is <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">–</span> <span class="pre">4,294,967,295</span></code> assuming a 4-byte integer).</p>
+</section>
+<section id="how-to-solve-it-sizeof-function">
+<h2>How to Solve It (sizeof function)<a class="headerlink" href="#how-to-solve-it-sizeof-function" title="Link to this heading">#</a></h2>
+<p>A very useful function called <code class="docutils literal notranslate"><span class="pre">sizeof()</span></code> comes to our rescue:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The size of int is %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We will see a warning in the console:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>COMPILER ERROR</strong>
+main.c:5:33: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long long unsigned int’</p>
+</div>
+<p>This is because the <code class="docutils literal notranslate"><span class="pre">%d</span></code> format specifier tells the compiler to expect an integer, while <code class="docutils literal notranslate"><span class="pre">sizeof()</span></code> returns a long unsigned integer, creating a mismatch and a potential data overflow.<br />
+The fix is to use the <code class="docutils literal notranslate"><span class="pre">%llu</span></code> format specifier, which stands for “long long unsigned”.<br />
+Now, building and running the program, we will see the output <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">4</span> <span class="pre">bytes</span></code>, meaning we can represent 2^32 symbols (4,294,967,295 symbols — if unsigned, numbers from 0 to 4,294,967,295; if signed, from <code class="docutils literal notranslate"><span class="pre">-2^31</span></code>, i.e. <code class="docutils literal notranslate"><span class="pre">-2,147,483,648</span></code>, to <code class="docutils literal notranslate"><span class="pre">(2^31)</span> <span class="pre">-</span> <span class="pre">1</span></code>, i.e. <code class="docutils literal notranslate"><span class="pre">2,147,483,647</span></code> — we subtract 1 from the positive side because one value is taken by “0”).</p>
+</section>
+<section id="including-limits-h">
+<h2>Including limits.h<a class="headerlink" href="#including-limits-h" title="Link to this heading">#</a></h2>
+<p>Instead of using a calculator to figure out the maximum and minimum value representable by a variable type, we can leverage <code class="docutils literal notranslate"><span class="pre">limits.h</span></code> by including it in our program.<br />
+We can use the definitions it provides by referencing (for integer variables) <code class="docutils literal notranslate"><span class="pre">INT_MIN</span></code> and <code class="docutils literal notranslate"><span class="pre">INT_MAX</span></code> as shown below:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;limits.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The maximum size of int is %d and the minimum size of int is %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">INT_MAX</span><span class="p">,</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These two definitions will be automatically replaced by the preprocessor with the maximum and minimum values representable by the <code class="docutils literal notranslate"><span class="pre">int</span></code> type <strong>ON THIS PLATFORM</strong>.<br />
+The output will be: <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">maximum</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">2147483647</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">minimum</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">-2147483648</span></code>.</p>
+</section>
+<section id="variables-on-modern-32-bit-and-64-bit-systems">
+<h2>Variables on Modern 32-bit and 64-bit Systems<a class="headerlink" href="#variables-on-modern-32-bit-and-64-bit-systems" title="Link to this heading">#</a></h2>
+<p>Although not guaranteed by the C standard — unlike older machines where nothing could be taken for granted, not even the size of a byte (which in some cases was 9 bits instead of 8) — in modern times we have a certain standardization of C types that you will find on 99% of machines:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Primitive types in C</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 9.7%" />
+<col style="width: 15.5%" />
+<col style="width: 4.9%" />
+<col style="width: 25.2%" />
+<col style="width: 12.6%" />
+<col style="width: 19.4%" />
+<col style="width: 12.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Unsigned Type</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Format specifier</p></th>
+<th class="head"><p>Range (signed)</p></th>
+<th class="head"><p>Range (unsigned)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>—</p></td>
+<td><p>1 byte</p></td>
+<td><p>Boolean value: true or false</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>0 – 1</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">char</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code></p></td>
+<td><p>1 byte</p></td>
+<td><p>Character (e.g. <code class="docutils literal notranslate"><span class="pre">'a'</span></code>) or decimal ASCII value</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%c</span></code> <code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>-128 – 127</p></td>
+<td><p>0 – 255</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code></p></td>
+<td><p>2 bytes</p></td>
+<td><p>16-bit integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%hd</span></code></p></td>
+<td><p>-32,768 – 32,767</p></td>
+<td><p>0 – 65,535</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code></p></td>
+<td><p>4 bytes</p></td>
+<td><p>32-bit integer, default integer type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>-2,147,483,648 – 2,147,483,647</p></td>
+<td><p>0 – 4,294,967,295</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p>8 bytes</p></td>
+<td><p>64-bit integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%lld</span></code></p></td>
+<td><p>-9,223,372,036,854,775,808 – 9,223,372,036,854,775,807</p></td>
+<td><p>0 – 18,446,744,073,709,551,615</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>—</p></td>
+<td><p>4 bytes</p></td>
+<td><p>Single-precision floating point, ~6-7 decimal digits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%f</span></code> <code class="docutils literal notranslate"><span class="pre">%e</span></code> <code class="docutils literal notranslate"><span class="pre">%g</span></code></p></td>
+<td><p>±1.2×10⁻³⁸ – ±3.4×10³⁸</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+<td><p>—</p></td>
+<td><p>8 bytes</p></td>
+<td><p>Double-precision floating point, ~15-16 decimal digits</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%lf</span></code> <code class="docutils literal notranslate"><span class="pre">%e</span></code> <code class="docutils literal notranslate"><span class="pre">%g</span></code></p></td>
+<td><p>±2.3×10⁻³⁰⁸ – ±1.7×10³⁰⁸</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="special-types">
+<h2>Special Types<a class="headerlink" href="#special-types" title="Link to this heading">#</a></h2>
+<p>The more attentive readers will have noticed that two specific types are missing from the table above: <code class="docutils literal notranslate"><span class="pre">long</span></code> and <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>.<br />
+This is because these two types follow specific rules that cause their size to vary depending on the machine.</p>
+<section id="the-long-type">
+<h3>The long Type<a class="headerlink" href="#the-long-type" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">long</span></code> type is designed (on Linux and macOS systems) as the reference type for perfectly representing a “word”. A <code class="docutils literal notranslate"><span class="pre">word</span></code> is simply the technical term for the size of a memory register: <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">bytes</span></code> on 32-bit systems and <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code> on 64-bit systems.<br />
+On Windows, things are simpler: Windows does not follow the standard for <code class="docutils literal notranslate"><span class="pre">long</span></code> and forces a length of 4 bytes even on 64-bit systems, due to the Windows ABI known as “LLP64”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>INFO</strong><br />
+LLP64 is an ABI (Application Binary Interface) model that defines the byte size of C primitive types on a given platform.
+The name is an acronym describing the sizes:</p>
+<ul class="simple">
+<li><p>Long → 32 bit (4 bytes)</p></li>
+<li><p>Long long → 64 bit (8 bytes)</p></li>
+<li><p>Pointer → 64 bit (8 bytes)</p></li>
+</ul>
+<p>It is the model used by 64-bit Windows. Microsoft’s choice to keep <code class="docutils literal notranslate"><span class="pre">long</span></code> at 32 bits was made for compatibility with existing 32-bit Windows code, avoiding the need to rewrite millions of lines of legacy code that assumed <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">=</span> <span class="pre">4</span> <span class="pre">bytes</span></code>.
+It contrasts with the LP64 model, used by Linux, macOS, and all Unix-like 64-bit systems, where:</p>
+<ul class="simple">
+<li><p>Long → 64 bit (8 bytes)</p></li>
+<li><p>Pointer → 64 bit (8 bytes)</p></li>
+</ul>
+</div>
+<p>In the past, integer types were often used to store memory pointers without considering the possibility of 64-bit systems, and as a result much legacy code would cause unexpected behaviours — or often direct crashes — if run on modern machines.</p>
+</section>
+<section id="long-double">
+<h3>Long Double<a class="headerlink" href="#long-double" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> type is even stranger, with 3 possible sizes:<br />
+On Linux and macOS systems its size is <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">bytes</span></code> (representing numbers with 18–19 significant digits) on 32-bit systems, and <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">bytes</span></code> (representing numbers with 33–34 significant digits) on 64-bit architectures.<br />
+Windows, on the other hand, simply treats <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> as a plain <code class="docutils literal notranslate"><span class="pre">double</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>INFO</strong><br />
+The reason Windows treats <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> as a plain <code class="docutils literal notranslate"><span class="pre">double</span></code> (64 bit) is tied to the same architectural choices of the LLP64 ABI. The 80-bit extended-precision x87 format has existed at the hardware level in x86 CPUs since the 1980s, but Microsoft chose not to expose it in the x64 ABI for two main reasons:</p>
+<ul class="simple">
+<li><p><strong>Performance</strong>: 80-bit x87 operations are slower than 64-bit SSE2 operations. Microsoft embraced SSE2 as the standard for floating-point operations on x64, abandoning the x87 stack.</p></li>
+<li><p><strong>Compatibility</strong>: keeping <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span> <span class="pre">==</span> <span class="pre">double</span></code> simplifies cross-platform porting and avoids surprises related to extended precision.</p></li>
+</ul>
+<p>The practical result is that <code class="docutils literal notranslate"><span class="pre">sizeof(long</span> <span class="pre">double)</span></code> returns <code class="docutils literal notranslate"><span class="pre">12</span></code> or <code class="docutils literal notranslate"><span class="pre">16</span></code> on Linux/macOS (depending on alignment) and <code class="docutils literal notranslate"><span class="pre">8</span></code> on Windows, identical to <code class="docutils literal notranslate"><span class="pre">sizeof(double)</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="advanced-types">
+<h2>Advanced Types<a class="headerlink" href="#advanced-types" title="Link to this heading">#</a></h2>
+<p>For greater memory-level certainty, we can use the advanced types of C, importable via <code class="docutils literal notranslate"><span class="pre">stdint.h</span></code>.<br />
+These are “new” types that were not part of the original C specification but allow us to specify both the type and the exact size of the variable we want.<br />
+For example, <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> is an unsigned (<code class="docutils literal notranslate"><span class="pre">u</span></code>) integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>) of size 64 bits (<code class="docutils literal notranslate"><span class="pre">64_t</span></code>).</p>
+<p>An important element of this library is <code class="docutils literal notranslate"><span class="pre">size_t</span></code>, which represents the theoretically maximum size that an object of any type (array, matrix, file) can have within our program — a maximum we define ourselves.<br />
+Other special types in this specification are <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code> and <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code>. The first is a <strong>signed</strong> integer type designed to be exactly the right size to store a memory pointer regardless of the machine we are running on. The second is the same but <strong>unsigned</strong>. The signed <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code> might seem of dubious utility since memory addresses are never negative, but it is used to perform pointer subtraction — to determine, for example, whether one value is stored before another in memory.</p>
+<br>
+<!-- Versions and languages set-up -->
+<style>
+  .fixed-bar {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(240, 240, 240, 0.85);
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+    color: #222;
+    display: flex;
+    gap: 12px;
+    padding: 6px 12px;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+
+  @media print {
+    .fixed-bar {
+      display: none !important;
+    }
+  }
+
+  .fixed-bar .dropdown {
+    position: relative;
+    user-select: none;
+  }
+
+  .fixed-bar .dropdown-toggle {
+    background-color: rgba(200, 200, 200, 0.4);
+    color: #222;
+    padding: 6px 10px;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+  .fixed-bar .dropdown-toggle::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .fixed-bar .dropdown-toggle:hover {
+    background-color: rgba(100, 150, 220, 0.2);
+    color: #1a3e72;
+    border-color: rgba(26, 62, 114, 0.6);
+  }
+
+  .fixed-bar .dropdown-toggle .fa {
+    font-size: 0.9rem;
+  }
+
+  .fixed-bar .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: rgba(250, 250, 250, 0.95);
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    z-index: 10000;
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+
+  .fixed-bar .dropdown-menu.show {
+    display: flex;
+  }
+
+  .fixed-bar .dropdown-menu a {
+    padding: 8px 12px;
+    color: #1a3e72;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+    white-space: nowrap;
+    transition: background-color 0.25s ease;
+  }
+
+  .fixed-bar .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .fixed-bar .dropdown-menu a:hover {
+    background-color: rgba(100, 150, 220, 0.15);
+  }
+</style>
+<div class="fixed-bar" role="region" aria-label="Version and language selector">
+  <div class="dropdown">
+    <div class="dropdown-toggle" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+      <span class="fa fa-book" aria-hidden="true"></span>
+      Version: <span class="current-value">V. 1.0</span>
+      <span class="fa caret-icon fa-caret-down" aria-hidden="true"></span>
+    </div>
+    <div class="dropdown-menu" role="listbox">
+      	<a href="#" role="option">V. 1.0</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <div class="dropdown-toggle" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+      <span class="fa fa-globe" aria-hidden="true"></span>
+      Language: <span class="current-value">English</span>
+      <span class="fa caret-icon fa-caret-down" aria-hidden="true"></span>
+    </div>
+    <div class="dropdown-menu" role="listbox">
+      	<a href="#" role="option">English</a>
+				<a href="#" role="option">Italiano</a>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bar = document.querySelector('.fixed-bar');
+  const dropdowns = bar.querySelectorAll('.dropdown');
+  const defaultLang = 'English';
+  const languages = ["English", "Italiano"];
+  const versions = ["V. 1.0"];
+
+  // ---------------------------
+  // Helpers
+  // ---------------------------
+
+  function closeAll() {
+    dropdowns.forEach(d => {
+      d.querySelector('.dropdown-menu').classList.remove('show');
+      const t = d.querySelector('.dropdown-toggle');
+      t.setAttribute('aria-expanded', 'false');
+      const caret = t.querySelector('.caret-icon');
+      if (caret) {
+        caret.classList.remove('fa-caret-up');
+        caret.classList.add('fa-caret-down');
+      }
+    });
+  }
+
+  function toggleMenu(dropdown) {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+    closeAll();
+    if (!isOpen) {
+      menu.classList.add('show');
+      toggle.setAttribute('aria-expanded', 'true');
+      const caret = toggle.querySelector('.caret-icon');
+      if (caret) {
+        caret.classList.remove('fa-caret-down');
+        caret.classList.add('fa-caret-up');
+      }
+    }
+  }
+
+  async function pathExists(path) {
+    try {
+      const r = await fetch(path, { method: 'HEAD' });
+      return r.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  async function resolvePath(segments, newLang, newVer) {
+    const seg = [...segments];
+
+    const langIndex = seg.findIndex(s => languages.includes(decodeURIComponent(s)));
+    const verIndex = seg.findIndex(s => versions.includes(decodeURIComponent(s)));
+
+    if (newLang) seg[langIndex] = encodeURIComponent(newLang);
+    if (newVer) seg[verIndex] = encodeURIComponent(newVer);
+
+    const primary = "/" + seg.join("/");
+
+    if (await pathExists(primary)) return primary;
+
+    // Fallback: default language
+    if (newLang) {
+      seg[langIndex] = encodeURIComponent(defaultLang);
+    }
+    const fallback = "/" + seg.join("/");
+    if (await pathExists(fallback)) return fallback;
+
+    // Last fallback -> /version/language/index.html
+    return `/${seg[0]}/${seg[1]}/index.html`;
+  }
+
+  // ---------------------------
+  // Events
+  // ---------------------------
+
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const display = dropdown.querySelector('.current-value');
+
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleMenu(dropdown);
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', async e => {
+        e.preventDefault();
+
+        const selected = link.textContent.trim();
+        display.textContent = selected;
+
+        const segments = window.location.pathname.split("/").filter(Boolean);
+
+        const isLang = toggle.textContent.includes("Language");
+        const isVer = toggle.textContent.includes("Version");
+
+        let newLang = null, newVer = null;
+
+        if (isLang) newLang = selected;
+        if (isVer) {
+          newVer = versions.find(v => v.endsWith(selected)) || selected;
+        }
+
+        const newPath = await resolvePath(segments, newLang, newVer);
+        window.location.pathname = newPath;
+      });
+    });
+  });
+
+  // Outside click closes all
+  window.addEventListener('click', closeAll);
+
+  // Escape closes all
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll();
+  });
+
+});
+
+/*
+Silly ahh frog for good luck ~ Niccolò Quadrani
+
+      (')-=-(')
+    __(   "   )__   ~ cra cra brother
+  / _/'-----'\_ \
+___\\ \\     // //___
+>____)/_\---/_\(____<
+
+*/
+
+
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_c_variables_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Static and Global Variables and Variables in Functions</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-variable-types">Introduction to Variable Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-solve-it-sizeof-function">How to Solve It (sizeof function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-limits-h">Including limits.h</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-on-modern-32-bit-and-64-bit-systems">Variables on Modern 32-bit and 64-bit Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-types">Special Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-long-type">The long Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-double">Long Double</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-types">Advanced Types</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Niccolò Quadrani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Niccolò Quadrani.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

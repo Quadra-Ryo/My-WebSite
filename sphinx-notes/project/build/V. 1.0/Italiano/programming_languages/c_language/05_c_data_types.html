@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tipi di variabili &#8212; Niccolò Quadrani&#39;s Blog 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming_languages/c_language/05_c_data_types';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Variabili statiche e globali e variabili nelle funzioni" href="04_c_variables_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Niccolò Quadrani's Blog 1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Indice</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../00_programming_languages_overview.html">Linguaggi di Programmazione</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="00_c_overview.html">Linguaggio C</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01_c_compiler.html">Compilatore e Hello World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_c_functions.html">Funzioni</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_c_variables.html">Variabili locali e Memoria</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_c_variables_2.html">Variabili statiche e globali e variabili nelle funzioni</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Tipi di variabili</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/programming_languages/c_language/05_c_data_types.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tipi di variabili</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduzione-ai-tipi-di-variabili">Introduzione ai tipi di variabili</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#come-risolvere-funzione-sizeof">Come risolvere (funzione sizeof)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#include-limits-h">Include limits.h</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili-nei-sistemi-moderni-a-32-e-64-bit">Variabili nei sistemi moderni a 32 e 64 bit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipi-particolari">Tipi particolari</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-long">Tipo long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-double">Long Double</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipi-avanzati">Tipi avanzati</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tipi-di-variabili">
+<h1>Tipi di variabili<a class="headerlink" href="#tipi-di-variabili" title="Link to this heading">#</a></h1>
+<section id="introduzione-ai-tipi-di-variabili">
+<h2>Introduzione ai tipi di variabili<a class="headerlink" href="#introduzione-ai-tipi-di-variabili" title="Link to this heading">#</a></h2>
+<p>Essendo che il linguaggio C è nato per poter essere eseguito in ogni tipo di macchina, dai microcontrollori ai super computer, per tale motivo esistono molte versioni del C per dare la possibilità al linguaggio di girare su ogni macchina.<br />
+Per questo motivo il C, a differenza di altri linguaggi come Python e Java, non ha una grandezza standard per le sue variabili.<br />
+Per fare un esempio prendiamo il tipo <code class="docutils literal notranslate"><span class="pre">int</span></code>. Il tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> all’interno di linguaggi come Java ha una lunghezza standard di 32 bit (4 Bytes) e può contenere valori che vanno da <code class="docutils literal notranslate"><span class="pre">-2.147.483.648</span></code> a <code class="docutils literal notranslate"><span class="pre">2.147.483.647</span></code>, in C non abbiamo invece questa certezza, non saremo mai certi dell’effettiva grandezza in memoria di una variabile.<br />
+L’unica certezza che abbiamo indipendentemente dalla versione di C e dalla macchina che stiamo andando ad usare è il campo <code class="docutils literal notranslate"><span class="pre">unsigned</span></code> (Esempio: <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code>) che andrà a forzare i nostri numeri senza segno non dando la possibilità di rappresentare numeri negativi ma andando ovviamente a dare la possibilità di rappresentare il doppio dei numeri positivi (Esempio per <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code> il range va è <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">4.294.967.295</span></code> considerando un intero di 4 bytes)</p>
+</section>
+<section id="come-risolvere-funzione-sizeof">
+<h2>Come risolvere (funzione sizeof)<a class="headerlink" href="#come-risolvere-funzione-sizeof" title="Link to this heading">#</a></h2>
+<p>Per questo motivo però ci viene in soccorso una funzione molto utile chiamata <code class="docutils literal notranslate"><span class="pre">sizeof()</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The size of int is %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Vedremo che apparirà un warning nella console:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>COMPILER ERROR</strong>
+main.c:5:33: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long long unsigned int’</p>
+</div>
+<p>Questo è perchè noi con il format specifier <code class="docutils literal notranslate"><span class="pre">%d</span></code> stiamo chiedendo al nostro compiler di aspettarsi un tipo intero mentre la funzione sizeof() ritorna un intero lungo senza segno creando una discrepanza e un possibile overflow di dati.<br />
+Per risolvere questo basterà andare ad usare il format specifier <code class="docutils literal notranslate"><span class="pre">%llu</span></code> che sta per “long long unsigned”.<br />
+Adesso buildando ed eseguendo il programma vedremo in output <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">4</span> <span class="pre">bytes</span></code> e quindi sapremo di poter rappresentare 2^32 simboli (4.294.967.295 simboli che possono essere in caso di unsigned numeri da 0 a 4.294.967.295 oppure in caso di intero con segno da <code class="docutils literal notranslate"><span class="pre">-2^31</span></code> cioè <code class="docutils literal notranslate"><span class="pre">-2.147.483.648</span></code> a <code class="docutils literal notranslate"><span class="pre">(2^31)</span> <span class="pre">-</span> <span class="pre">1</span></code> cioè <code class="docutils literal notranslate"><span class="pre">2.147.483.647</span></code> sottraiamo 1 dai numeri positivi in quanto un numero viene preso dal carattere “0”).</p>
+</section>
+<section id="include-limits-h">
+<h2>Include limits.h<a class="headerlink" href="#include-limits-h" title="Link to this heading">#</a></h2>
+<p>Invece di dover fare i calcoli con la calcolatrice per capire il numero massimo e minimo rappresentabile da un tipo di variabile possiamo andare a sfruttare <code class="docutils literal notranslate"><span class="pre">limits.h</span></code> includendola all’interno del nostro programma.<br />
+Si potrà andare ad usare le definizioni contenute all’interno del file andando a richiamare (nel caso di variabili intere) <code class="docutils literal notranslate"><span class="pre">INT_MIN</span></code> e <code class="docutils literal notranslate"><span class="pre">INT_MAX</span></code> come riportato qui sotto:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;limits.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The maximum size of int is %d and the minimum size of int is %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">INT_MAX</span><span class="p">,</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Queste due definizioni verranno sostituite automaticamente dal preprocessore con i valori massimi e minimi che può essere rappresentato dal tipo int <strong>IN QUESTA PIATTAFORMA</strong>.<br />
+L’output infatti sarà:  <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">maximum</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">2147483647</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">minimum</span> <span class="pre">size</span> <span class="pre">of</span> <span class="pre">int</span> <span class="pre">is</span> <span class="pre">-2147483648</span></code>.</p>
+</section>
+<section id="variabili-nei-sistemi-moderni-a-32-e-64-bit">
+<h2>Variabili nei sistemi moderni a 32 e 64 bit<a class="headerlink" href="#variabili-nei-sistemi-moderni-a-32-e-64-bit" title="Link to this heading">#</a></h2>
+<p>Pur non essendo garantito dallo standard C, al contrario delle macchine del passato dove nulla poteva essere dato per scontato, nemmeno la grandezza di un Byte a 8 bit in quanto in alcuni casi era 9, nei giorni moderni abbiamo una certa standardizzazione dei tipi in C che troverete nel 99% delle macchine:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Tipi primitivi in C</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 9.7%" />
+<col style="width: 15.5%" />
+<col style="width: 4.9%" />
+<col style="width: 25.2%" />
+<col style="width: 12.6%" />
+<col style="width: 19.4%" />
+<col style="width: 12.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo</p></th>
+<th class="head"><p>Tipo Unsigned</p></th>
+<th class="head"><p>Dim.</p></th>
+<th class="head"><p>Descrizione</p></th>
+<th class="head"><p>Format specifier</p></th>
+<th class="head"><p>Range (signed)</p></th>
+<th class="head"><p>Range (unsigned)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>—</p></td>
+<td><p>1 byte</p></td>
+<td><p>Valore booleano: vero o falso</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>0 – 1</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">char</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code></p></td>
+<td><p>1 byte</p></td>
+<td><p>Carattere (es. <code class="docutils literal notranslate"><span class="pre">'a'</span></code>) o valore decimale ASCII</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%c</span></code> <code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>-128 – 127</p></td>
+<td><p>0 – 255</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code></p></td>
+<td><p>2 byte</p></td>
+<td><p>Intero a 16 bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%hd</span></code></p></td>
+<td><p>-32.768 – 32.767</p></td>
+<td><p>0 – 65.535</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code></p></td>
+<td><p>4 byte</p></td>
+<td><p>Intero a 32 bit, tipo intero di default</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p>-2.147.483.648 – 2.147.483.647</p></td>
+<td><p>0 – 4.294.967.295</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p>8 byte</p></td>
+<td><p>Intero a 64 bit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%lld</span></code></p></td>
+<td><p>-9.223.372.036.854.775.808 – 9.223.372.036.854.775.807</p></td>
+<td><p>0 – 18.446.744.073.709.551.615</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>—</p></td>
+<td><p>4 byte</p></td>
+<td><p>Virgola mobile precisione singola, ~6-7 cifre decimali</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%f</span></code> <code class="docutils literal notranslate"><span class="pre">%e</span></code> <code class="docutils literal notranslate"><span class="pre">%g</span></code></p></td>
+<td><p>±1.2×10⁻³⁸ – ±3.4×10³⁸</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+<td><p>—</p></td>
+<td><p>8 byte</p></td>
+<td><p>Virgola mobile precisione doppia, ~15-16 cifre decimali</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%lf</span></code> <code class="docutils literal notranslate"><span class="pre">%e</span></code> <code class="docutils literal notranslate"><span class="pre">%g</span></code></p></td>
+<td><p>±2.3×10⁻³⁰⁸ – ±1.7×10³⁰⁸</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tipi-particolari">
+<h2>Tipi particolari<a class="headerlink" href="#tipi-particolari" title="Link to this heading">#</a></h2>
+<p>I più attenti avranno notato che dalla tabella sopra mancano due tipi specifici: il tipo <code class="docutils literal notranslate"><span class="pre">long</span></code> e il tipo <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>.<br />
+Questo perchè questi due tipi sono tipi speciali che seguono delle regole specifiche importanti che ne fanno cambiare la dimensione al variare della macchina.</p>
+<section id="tipo-long">
+<h3>Tipo long<a class="headerlink" href="#tipo-long" title="Link to this heading">#</a></h3>
+<p>Il tipo long viene pensato (su sistemi Linux e su sistemi macOS) come tipo di riferimento per rappresentare perfettamente una “parola”. Una <code class="docutils literal notranslate"><span class="pre">parola</span></code> non è altro che il termine tecnico per indicare la dimensione di un registro di memoria che sarà quindi <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">Bytes</span></code> per i sistemi a 32 bit mentre sarà <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">Bytes</span></code> per i sistemi a 64 bit.<br />
+Per Windows invece il discorso è più semplice in quanto Windows non segue lo standard della variabile di tipo long in quanto forza anche sui sistemi a 64 bit la lunghezza di 4 Bytes per i tipi long per via del Windows ABI chiamato “LLP64”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>INFO</strong><br />
+LLP64 è un modello ABI (Application Binary Interface) che definisce la dimensione in byte dei tipi primitivi del C su una determinata piattaforma.
+Il nome è un acronimo che descrive proprio le dimensioni:</p>
+<ul class="simple">
+<li><p>Long → 32 bit (4 byte)</p></li>
+<li><p>Long long → 64 bit (8 byte)</p></li>
+<li><p>Pointer → 64 bit (8 byte)</p></li>
+</ul>
+<p>È il modello usato da Windows a 64 bit. La scelta di Microsoft fu mantenere long a 32 bit per compatibilità con il codice Windows a 32 bit già esistente, evitando di dover riscrivere milioni di righe di codice legacy che assumevano long = 4 byte.
+Lo si contrappone al modello LP64, usato invece da Linux, macOS e tutti i sistemi Unix-like a 64 bit, dove:</p>
+<ul class="simple">
+<li><p>Long → 64 bit (8 byte)</p></li>
+<li><p>Pointer → 64 bit (8 byte)</p></li>
+</ul>
+</div>
+<p>Nel passato per salvare in memoria dei puntatori veniva spesso usato il tipo intero non andando a considerare la possibilità di avere sistemi a 64 bit e per questo molti codici del passato se eseguiti su macchine moderne porterebbero ad unexpected behaviours oppure, molto spesso, al crash diretto.</p>
+</section>
+<section id="long-double">
+<h3>Long Double<a class="headerlink" href="#long-double" title="Link to this heading">#</a></h3>
+<p>Il tipo Long Double è ancora più strano con 3 dimensioni possibili:<br />
+Per sistemi Linux e per sistemi macOS la dimensione è di <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Bytes</span></code> (Permette di rappresentare numeri con 18-19 cifre significative) per sistemi a 32 bit e di <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">Bytes</span></code> (Permette di rappresentare numeri con 33-34 cifre significative) per architetture a 64 bit.<br />
+Al contrario Windows semplicemente considera i <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> come semplici <code class="docutils literal notranslate"><span class="pre">double</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>INFO</strong><br />
+La ragione per cui Windows tratta <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> come un semplice <code class="docutils literal notranslate"><span class="pre">double</span></code> (64 bit) è legata alle stesse scelte architetturali dell’ABI LLP64. Il formato a 80 bit (extended precision x87) esiste a livello hardware nelle CPU x86 fin dagli anni ‘80, ma Microsoft scelse di non esporlo nell’ABI x64 per due motivi principali:</p>
+<ul class="simple">
+<li><p><strong>Performance</strong>: le operazioni x87 a 80 bit sono più lente rispetto alle operazioni SSE2 a 64 bit. Microsoft abbracciò SSE2 come standard per i floating point su x64, abbandonando lo stack x87.</p></li>
+<li><p><strong>Compatibilità</strong>: mantenere <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span> <span class="pre">==</span> <span class="pre">double</span></code> semplifica il porting di codice cross-platform evitando sorprese legate alla precisione estesa.</p></li>
+</ul>
+<p>Il risultato pratico è che <code class="docutils literal notranslate"><span class="pre">sizeof(long</span> <span class="pre">double)</span></code> restituisce <code class="docutils literal notranslate"><span class="pre">12</span></code> o <code class="docutils literal notranslate"><span class="pre">16</span></code> su Linux/macOS (a seconda dell’allineamento) e <code class="docutils literal notranslate"><span class="pre">8</span></code> su Windows, identico a <code class="docutils literal notranslate"><span class="pre">sizeof(double)</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="tipi-avanzati">
+<h2>Tipi avanzati<a class="headerlink" href="#tipi-avanzati" title="Link to this heading">#</a></h2>
+<p>Per avere una sicurezza a livello di memoria ci vengono in soccorso i tipi avanzati del C importabili grazie a <code class="docutils literal notranslate"><span class="pre">stdint.h</span></code> all’interno del nostro programma.<br />
+Questi sono tipi “nuovi” che non sono nati con il C e che all’inizio non facevano parte della specifica ma che ci permettono di specificare il tipo e la grandezza precisa della variabile che voglio.<br />
+Esempio: <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> ad esempio è un intero (<code class="docutils literal notranslate"><span class="pre">int</span></code>), unsigned (<code class="docutils literal notranslate"><span class="pre">u</span></code>) di grandezza 64 bit (<code class="docutils literal notranslate"><span class="pre">64_t</span></code>).</p>
+<p>Un elemento importante di questa libreria è <code class="docutils literal notranslate"><span class="pre">size_t</span></code> che rappresenta la grandezza teoricamente massima che può avere un oggetto di qualsiasi tipo (Array, matrice, file) all’interno del nostro programma. Una grandezza che non può essere superata che decidiamo noi.<br />
+Altri tipi speciali di questa specifica sono <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code> e <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code>. Il primo è pensato per essere la grandezza perfetta per salvare in memoria un puntatore ad una cella di memoria indipendentemente dalla macchina su cui operiamo ed è un tipo con segno (può quindi rappresentare valori negativi). Il secondo è uguale al primo ma senza segno (unsigned), utile quando si lavora con indirizzi di memoria puri. Il tipo con segno <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code> può sembrare di funzionalità dubbia in quanto non andrò mai ad avere un indirizzo di memoria negativo, ma viene usato per fare operazioni di sottrazione sui puntatori per vedere, ad esempio, se un valore è salvato prima di un altro all’interno della mia memoria.</p>
+<br>
+<!-- Versions and languages set-up -->
+<style>
+  .fixed-bar {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(240, 240, 240, 0.85);
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+    color: #222;
+    display: flex;
+    gap: 12px;
+    padding: 6px 12px;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+
+  @media print {
+    .fixed-bar {
+      display: none !important;
+    }
+  }
+
+  .fixed-bar .dropdown {
+    position: relative;
+    user-select: none;
+  }
+
+  .fixed-bar .dropdown-toggle {
+    background-color: rgba(200, 200, 200, 0.4);
+    color: #222;
+    padding: 6px 10px;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+  .fixed-bar .dropdown-toggle::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .fixed-bar .dropdown-toggle:hover {
+    background-color: rgba(100, 150, 220, 0.2);
+    color: #1a3e72;
+    border-color: rgba(26, 62, 114, 0.6);
+  }
+
+  .fixed-bar .dropdown-toggle .fa {
+    font-size: 0.9rem;
+  }
+
+  .fixed-bar .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: rgba(250, 250, 250, 0.95);
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    z-index: 10000;
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+
+  .fixed-bar .dropdown-menu.show {
+    display: flex;
+  }
+
+  .fixed-bar .dropdown-menu a {
+    padding: 8px 12px;
+    color: #1a3e72;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+    white-space: nowrap;
+    transition: background-color 0.25s ease;
+  }
+
+  .fixed-bar .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .fixed-bar .dropdown-menu a:hover {
+    background-color: rgba(100, 150, 220, 0.15);
+  }
+</style>
+<div class="fixed-bar" role="region" aria-label="Version and language selector">
+  <div class="dropdown">
+    <div class="dropdown-toggle" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+      <span class="fa fa-book" aria-hidden="true"></span>
+      Version: <span class="current-value">V. 1.0</span>
+      <span class="fa caret-icon fa-caret-down" aria-hidden="true"></span>
+    </div>
+    <div class="dropdown-menu" role="listbox">
+      	<a href="#" role="option">V. 1.0</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <div class="dropdown-toggle" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+      <span class="fa fa-globe" aria-hidden="true"></span>
+      Language: <span class="current-value">Italiano</span>
+      <span class="fa caret-icon fa-caret-down" aria-hidden="true"></span>
+    </div>
+    <div class="dropdown-menu" role="listbox">
+      	<a href="#" role="option">English</a>
+				<a href="#" role="option">Italiano</a>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bar = document.querySelector('.fixed-bar');
+  const dropdowns = bar.querySelectorAll('.dropdown');
+  const defaultLang = 'English';
+  const languages = ["English", "Italiano"];
+  const versions = ["V. 1.0"];
+
+  // ---------------------------
+  // Helpers
+  // ---------------------------
+
+  function closeAll() {
+    dropdowns.forEach(d => {
+      d.querySelector('.dropdown-menu').classList.remove('show');
+      const t = d.querySelector('.dropdown-toggle');
+      t.setAttribute('aria-expanded', 'false');
+      const caret = t.querySelector('.caret-icon');
+      if (caret) {
+        caret.classList.remove('fa-caret-up');
+        caret.classList.add('fa-caret-down');
+      }
+    });
+  }
+
+  function toggleMenu(dropdown) {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+    closeAll();
+    if (!isOpen) {
+      menu.classList.add('show');
+      toggle.setAttribute('aria-expanded', 'true');
+      const caret = toggle.querySelector('.caret-icon');
+      if (caret) {
+        caret.classList.remove('fa-caret-down');
+        caret.classList.add('fa-caret-up');
+      }
+    }
+  }
+
+  async function pathExists(path) {
+    try {
+      const r = await fetch(path, { method: 'HEAD' });
+      return r.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  async function resolvePath(segments, newLang, newVer) {
+    const seg = [...segments];
+
+    const langIndex = seg.findIndex(s => languages.includes(decodeURIComponent(s)));
+    const verIndex = seg.findIndex(s => versions.includes(decodeURIComponent(s)));
+
+    if (newLang) seg[langIndex] = encodeURIComponent(newLang);
+    if (newVer) seg[verIndex] = encodeURIComponent(newVer);
+
+    const primary = "/" + seg.join("/");
+
+    if (await pathExists(primary)) return primary;
+
+    // Fallback: default language
+    if (newLang) {
+      seg[langIndex] = encodeURIComponent(defaultLang);
+    }
+    const fallback = "/" + seg.join("/");
+    if (await pathExists(fallback)) return fallback;
+
+    // Last fallback -> /version/language/index.html
+    return `/${seg[0]}/${seg[1]}/index.html`;
+  }
+
+  // ---------------------------
+  // Events
+  // ---------------------------
+
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const display = dropdown.querySelector('.current-value');
+
+    toggle.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleMenu(dropdown);
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', async e => {
+        e.preventDefault();
+
+        const selected = link.textContent.trim();
+        display.textContent = selected;
+
+        const segments = window.location.pathname.split("/").filter(Boolean);
+
+        const isLang = toggle.textContent.includes("Language");
+        const isVer = toggle.textContent.includes("Version");
+
+        let newLang = null, newVer = null;
+
+        if (isLang) newLang = selected;
+        if (isVer) {
+          newVer = versions.find(v => v.endsWith(selected)) || selected;
+        }
+
+        const newPath = await resolvePath(segments, newLang, newVer);
+        window.location.pathname = newPath;
+      });
+    });
+  });
+
+  // Outside click closes all
+  window.addEventListener('click', closeAll);
+
+  // Escape closes all
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll();
+  });
+
+});
+
+/*
+Silly ahh frog for good luck ~ Niccolò Quadrani
+
+      (')-=-(')
+    __(   "   )__   ~ cra cra brother
+  / _/'-----'\_ \
+___\\ \\     // //___
+>____)/_\---/_\(____<
+
+*/
+
+
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_c_variables_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Variabili statiche e globali e variabili nelle funzioni</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduzione-ai-tipi-di-variabili">Introduzione ai tipi di variabili</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#come-risolvere-funzione-sizeof">Come risolvere (funzione sizeof)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#include-limits-h">Include limits.h</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabili-nei-sistemi-moderni-a-32-e-64-bit">Variabili nei sistemi moderni a 32 e 64 bit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipi-particolari">Tipi particolari</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-long">Tipo long</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-double">Long Double</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipi-avanzati">Tipi avanzati</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Niccolò Quadrani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Niccolò Quadrani.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
