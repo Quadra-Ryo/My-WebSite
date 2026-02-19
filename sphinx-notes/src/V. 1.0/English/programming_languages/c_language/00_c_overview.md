@@ -1,4 +1,4 @@
-# Introduction to C
+# C Language
 
 This documentation is intended for an audience that already possesses at least basic programming knowledge. It is designed to be **highly practical** with minimal theoretical overhead.
 

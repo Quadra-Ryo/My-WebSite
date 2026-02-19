@@ -1,4 +1,4 @@
-# Variabili locali e Memoria in C
+# Variabili locali e Memoria
 
 ## Variabili locali
 

@@ -1,4 +1,4 @@
-# Introduzione al C
+# Linguaggio C
 
 Questa documentazione è consigliata a un pubblico con già conoscenze, anche minime, di programmazione. Questa sezione sarà ampiamente improntata alla **pratica** e poco alla teoria.
 

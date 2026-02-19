@@ -1,4 +1,4 @@
-# Compilatore C e Hello World
+# Compilatore e Hello World
 
 Come già accennato nella pagina introduttiva un file in linguaggio C ha bisogno di essere compilato prima di poterlo eseguire.  
 
