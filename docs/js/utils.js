@@ -326,10 +326,11 @@ function renderSection(section, items) {
                 </div>
             `;
         } else {
+            const institutionHTML = (item.company || item.institution).replace(/<a /g, '<a class="company-link" ');
             return `
                 <div class="item">
                     <h3>${item.role || item.degree}</h3>
-                    <p class="meta">${item.company || item.institution} • ${item.period}</p>
+                    <p class="meta">${institutionHTML} • ${item.period}</p>
                     <p class="description">${item.description}</p>
                 </div>
             `;
