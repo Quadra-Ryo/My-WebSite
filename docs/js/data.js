@@ -21,7 +21,7 @@ const portfolioData = {
                 role: 'Robotic R&D Software Engineer',
                 company: 'ARS Automation',
                 companyUrl: 'https://www.linkedin.com/company/ars-automation-srl/posts/?feedView=all',
-                period: '08/2023 - Presente',
+                period: '08/2023 - 02/2026',
                 description: 'Ricerca e sviluppo software nel campo della <span class="highlight">Robotica industriale</span> utilizzando diversi linguaggi di programmazione (vedi sotto) e stesura di documentazione con tool Office e mediante l\'uso di <span class="highlight">Sphinx</span>. Sviluppo di applicazioni gestionali in <span class="highlight">Android Studio</span> e sviluppo di testing di prodotti proprietari.',
                 robots: [
                     { brand: 'FANUC', tech: 'Fanuc Karel' },
@@ -183,7 +183,7 @@ const portfolioData = {
                 role: 'Robotic R&D Software Engineer',
                 company: 'ARS Automation',
                 companyUrl: 'https://www.linkedin.com/company/ars-automation-srl/posts/?feedView=all',
-                period: '08/2023 - Present',
+                period: '08/2023 - 02/2026',
                 description: 'Research and software development in industrial <span class="highlight">robotics field</span> using a lot of different programming languages (see below) and documentation writing using Office tools and <span class="highlight">Sphinx</span>. Development of management applications in <span class="highlight">Android Studio</span> and proprietary product testing development.',
                 robots: [
                     { brand: 'FANUC', tech: 'Fanuc Karel' },
