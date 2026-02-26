@@ -18,6 +18,13 @@ const portfolioData = {
         },
         career: [
             {
+                role: 'Firmware Developer',
+                company: 'Zucchetti Centro Sistemi',
+                companyUrl: 'https://www.linkedin.com/company/zucchetti-centro-sistemi-spa/',
+                period: '02/2026 - Presente',
+                description: 'Sviluppo firmware e prototipazione avanzata di macchinari speciali e sistemi innovativi non ancora commercializzati, all\'interno del <span class="highlight">Laboratorio delle Idee</span>. Progettazione e implementazione di soluzioni embedded a basso livello in <span class="highlight">C</span> e sviluppo di strumenti e automazioni software in <span class="highlight">Python</span>, con focus su architetture hardware proprietarie e cicli di vita pre-produzione. Adozione del paradigma <span class="highlight">Quantum Programming (QP)</span> per la modellazione del comportamento tramite <span class="highlight">Macchine a Stati Gerarchiche (HSM)</span>, con architettura event-driven e gestione reattiva degli stati in ambienti real-time.'
+            },
+            {
                 role: 'Robotic R&D Software Engineer',
                 company: 'ARS Automation',
                 companyUrl: 'https://www.linkedin.com/company/ars-automation-srl/posts/?feedView=all',
@@ -179,6 +186,13 @@ const portfolioData = {
             liveDemo: 'Live Demo'
         },
         career: [
+            {
+                role: 'Firmware Developer',
+                company: 'Zucchetti Centro Sistemi',
+                companyUrl: 'https://www.linkedin.com/company/zucchetti-centro-sistemi-spa/',
+                period: '02/2026 - Present',
+                description: 'Firmware development and advanced prototyping of special machinery and innovative systems not yet released to market, within the <span class="highlight">Laboratorio delle Idee</span> (Ideas Lab). Design and low-level embedded implementation in <span class="highlight">C</span> and software tooling and automation in <span class="highlight">Python</span>, with a focus on proprietary hardware architectures and pre-production lifecycles. Adoption of the <span class="highlight">Quantum Programming (QP)</span> paradigm for behavior modeling through <span class="highlight">Hierarchical State Machines (HSM)</span>, with event-driven architecture and reactive state management in real-time environments.'
+            },
             {
                 role: 'Robotic R&D Software Engineer',
                 company: 'ARS Automation',
