@@ -2,7 +2,7 @@
 
 ## Introduction to Variable Types
 Since the C language was designed to run on every type of machine, from microcontrollers to supercomputers, many versions of C exist to allow the language to run on any machine.  
-For this reason, C — unlike other languages such as Python and Java — does not have a standard size for its variables.  
+For this reason, C, unlike other languages such as Python and Java, does not have a standard size for its variables.  
 Take the `int` type as an example. In languages like Java, `int` has a standard length of 32 bits (4 bytes) and can hold values ranging from `-2,147,483,648` to `2,147,483,647`. In C we have no such guarantee; we can never be certain of the actual size in memory of a variable.  
 The only certainty we have regardless of the C version or the machine we are using is the `unsigned` qualifier (e.g. `unsigned int`), which forces our numbers to be unsigned, removing the ability to represent negative numbers but doubling the range of positive numbers (for `unsigned int` the range is `0 – 4,294,967,295` assuming a 4-byte integer).
 
@@ -27,7 +27,7 @@ main.c:5:33: warning: format '%d' expects argument of type 'int', but argument 2
  
 This is because the `%d` format specifier tells the compiler to expect an integer, while `sizeof()` returns a long unsigned integer, creating a mismatch and a potential data overflow.  
 The fix is to use the `%llu` format specifier, which stands for "long long unsigned".  
-Now, building and running the program, we will see the output `The size of int is 4 bytes`, meaning we can represent 2^32 symbols (4,294,967,295 symbols — if unsigned, numbers from 0 to 4,294,967,295; if signed, from `-2^31`, i.e. `-2,147,483,648`, to `(2^31) - 1`, i.e. `2,147,483,647` — we subtract 1 from the positive side because one value is taken by "0").
+Now, building and running the program, we will see the output `The size of int is 4 bytes`, meaning we can represent 2^32 symbols (4,294,967,295 symbols, if unsigned, numbers from 0 to 4,294,967,295; if signed, from `-2^31`, i.e. `-2,147,483,648`, to `(2^31) - 1`, i.e. `2,147,483,647`, we subtract 1 from the positive side because one value is taken by "0").
 
 ## Including limits.h
 Instead of using a calculator to figure out the maximum and minimum value representable by a variable type, we can leverage `limits.h` by including it in our program.  
@@ -49,7 +49,7 @@ The output will be: `The maximum size of int is 2147483647 and the minimum size 
 
 
 ## Variables on Modern 32-bit and 64-bit Systems
-Although not guaranteed by the C standard — unlike older machines where nothing could be taken for granted, not even the size of a byte (which in some cases was 9 bits instead of 8) — in modern times we have a certain standardization of C types that you will find on 99% of machines:  
+Although not guaranteed by the C standard, unlike older machines where nothing could be taken for granted, not even the size of a byte (which in some cases was 9 bits instead of 8), in modern times we have a certain standardization of C types that you will find on 99% of machines:  
 
 ```{list-table} Primitive types in C
 :widths: 10 16 5 26 13 20 13
@@ -138,7 +138,7 @@ It contrasts with the LP64 model, used by Linux, macOS, and all Unix-like 64-bit
 - Pointer → 64 bit (8 bytes)
 ```
 
-In the past, integer types were often used to store memory pointers without considering the possibility of 64-bit systems, and as a result much legacy code would cause unexpected behaviours — or often direct crashes — if run on modern machines.
+In the past, integer types were often used to store memory pointers without considering the possibility of 64-bit systems, and as a result much legacy code would cause unexpected behaviours, or often direct crashes, if run on modern machines.
 
 ### Long Double
 The `long double` type is even stranger, with 3 possible sizes:  
@@ -160,5 +160,5 @@ For greater memory-level certainty, we can use the advanced types of C, importab
 These are "new" types that were not part of the original C specification but allow us to specify both the type and the exact size of the variable we want.  
 For example, `uint64_t` is an unsigned (`u`) integer (`int`) of size 64 bits (`64_t`).  
 
-An important element of this library is `size_t`, which represents the theoretically maximum size that an object of any type (array, matrix, file) can have within our program — a maximum we define ourselves.  
-Other special types in this specification are `intptr_t` and `uintptr_t`. The first is a **signed** integer type designed to be exactly the right size to store a memory pointer regardless of the machine we are running on. The second is the same but **unsigned**. The signed `intptr_t` might seem of dubious utility since memory addresses are never negative, but it is used to perform pointer subtraction — to determine, for example, whether one value is stored before another in memory.
+An important element of this library is `size_t`, which represents the theoretically maximum size that an object of any type (array, matrix, file) can have within our program, a maximum we define ourselves.  
+Other special types in this specification are `intptr_t` and `uintptr_t`. The first is a **signed** integer type designed to be exactly the right size to store a memory pointer regardless of the machine we are running on. The second is the same but **unsigned**. The signed `intptr_t` might seem of dubious utility since memory addresses are never negative, but it is used to perform pointer subtraction, to determine, for example, whether one value is stored before another in memory.
