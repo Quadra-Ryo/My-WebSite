@@ -11,3 +11,11 @@ I patterns si classificano generalmente su più livelli di astrazione:
 - **Idioms**, soluzioni a basso livello specifiche di un linguaggio o piattaforma
 
 Un pattern non è una regola rigida ma un vocabolario condiviso tra sviluppatori: riconoscere e nominare un pattern permette di comunicare soluzioni architetturali complesse in modo preciso ed efficiente, riducendo l'ambiguità nel design del sistema.
+
+```{toctree}
+:hidden:
+:caption: Indice
+:maxdepth: 1
+
+architectural-pattern/00_architectural_patterns.md
+```

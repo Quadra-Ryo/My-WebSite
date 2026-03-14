@@ -2,7 +2,7 @@
 const portfolioData = {
     it: {
         title: 'Junior Robotic Software R&D Engineer',
-        caption: 'Sviluppatore software backend di 20 anni con <span class="highlight">3 anni di esperienza lavorativa</span> e 6 anni di studio in programmazione. Localizzato in <span class="highlight">Italia (Toscana, AR)</span>. Specializzato principalmente in <span class="highlight">Python</span>, <span class="highlight">C</span>, <span class="highlight">Java</span> e <span class="highlight">Sphinx</span>, con forte adattabilità acquisita attraverso esperienze in <span class="highlight">robotica</span> ed <span class="highlight">embedded systems</span>.',
+        caption: 'Sviluppatore software backend di 21 anni con <span class="highlight">3 anni di esperienza lavorativa</span> e 6 anni di studio in programmazione. Localizzato in <span class="highlight">Italia (Toscana, AR)</span>. Specializzato principalmente in <span class="highlight">Python</span>, <span class="highlight">C</span>, <span class="highlight">Java</span> e <span class="highlight">Sphinx</span>, con forte adattabilità acquisita attraverso esperienze in <span class="highlight">robotica</span> ed <span class="highlight">embedded systems</span>.',
         tabs: {
             career: 'CARRIERA',
             projects: 'PROGETTI',
@@ -171,7 +171,7 @@ const portfolioData = {
     },
     en: {
         title: 'Junior Robotic Software R&D Engineer',
-        caption: '20-year-old backend software developer with <span class="highlight">3 years of work experience</span> and 6 years of programming study. Located in <span class="highlight">Italy (Tuscany, AR)</span>. Specialized mainly in <span class="highlight">Python</span>, <span class="highlight">C</span>, <span class="highlight">Java</span>, and <span class="highlight">Sphinx</span>, with strong adaptability gained through experiences in <span class="highlight">robotics</span> and <span class="highlight">embedded systems</span>.',
+        caption: '21-year-old backend software developer with <span class="highlight">3 years of work experience</span> and 6 years of programming study. Located in <span class="highlight">Italy (Tuscany, AR)</span>. Specialized mainly in <span class="highlight">Python</span>, <span class="highlight">C</span>, <span class="highlight">Java</span>, and <span class="highlight">Sphinx</span>, with strong adaptability gained through experiences in <span class="highlight">robotics</span> and <span class="highlight">embedded systems</span>.',
         tabs: {
             career: 'CAREER',
             projects: 'PROJECTS',

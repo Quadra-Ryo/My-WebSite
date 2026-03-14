@@ -11,3 +11,11 @@ Patterns are generally classified across multiple levels of abstraction:
 - **Idioms**, low-level solutions specific to a particular language or platform
 
 A pattern is not a rigid rule but a shared vocabulary among developers: recognizing and naming a pattern allows complex architectural solutions to be communicated precisely and efficiently, reducing ambiguity in system design.
+
+```{toctree}
+:hidden:
+:caption: Indice
+:maxdepth: 1
+
+architectural-pattern/00_architectural_patterns.md
+```

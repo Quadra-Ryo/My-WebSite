@@ -19,4 +19,5 @@ Il materiale è pensato come **supporto allo studio personale** e come riferimen
 :maxdepth: 1
 
 programming_languages/00_programming_languages_overview.md
+IT-Patterns/00_patterns.md
 ```

@@ -19,4 +19,5 @@ The material is designed as **personal study support** and as an open reference 
 :maxdepth: 1
 
 programming_languages/00_programming_languages_overview.md
+IT-Patterns/00_patterns.md
 ```
