@@ -320,7 +320,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-by-difference">Programming by difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-by-difference">Programming by Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-examples">Practical Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#win32-wndproc-in-c">Win32 WndProc in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#android-ontouchevent-in-kotlin-java">Android onTouchEvent in Kotlin/Java</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-pattern">The Common Pattern</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-harels-statecharts">Application to Harel’s Statecharts</a></li>
 </ul>
             </nav>
@@ -335,35 +341,209 @@ document.write(`
                   
   <section id="ultimate-hook">
 <h1>Ultimate Hook<a class="headerlink" href="#ultimate-hook" title="Link to this heading">#</a></h1>
-<p>The “Ultimate Hook” paradigm arises from the need to give the programmer full freedom without sacrificing the standardization of a system (e.g., Windows) in any way.
-The solution offered is a system where all interactions have a default way in which they can be handled, but this default is not executed as standard.
-The name is very evocative: a “Hook” in computer science is a point where you can “hang” your custom code within an already existing flow. The “Ultimate Hook” is the ultimate hook because it doesn’t concern just a small function, but the entire lifecycle of the application.
-In fact, the <strong>programmer</strong> is given the ability to handle the event through code, and only if the event is not handled by the programmer do we fall back to the standard handling.</p>
-<p>For events such as a mouse click on a window, this paradigm creates an event hierarchy of this kind:</p>
+<p>The “Ultimate Hook” paradigm arises from the need to give developers full freedom without sacrificing the standardization of a system (e.g., Windows).
+The solution offered is a system where all interactions have a default way of being handled, but that default is not executed as the standard first response.
+The name is quite evocative: a “Hook” in computer science is a point where you can “hang” your custom code within an existing flow. The “Ultimate Hook” is the ultimate hook because it doesn’t concern just a small function, but the entire lifecycle of the application.
+The <strong>developer</strong> is given the opportunity to handle the event through code, and only if the event is not handled by the developer do we fall back to the standard handling.</p>
+<p>For events like a mouse click on a window, this paradigm creates an event hierarchy of this kind:</p>
 <ul class="simple">
-<li><p>The event originates in the Operating System, which detects the machine’s inputs</p></li>
+<li><p>The event originates in the Operating System, which detects machine inputs</p></li>
 <li><p>The system checks whether the application handles this interaction</p></li>
-<li><p>The application decides whether to intercept the event with custom logic or to ignore it, letting the default handling bubble back up to the operating system (fall-through mechanism)</p></li>
+<li><p>The application decides whether to intercept the event with custom logic or ignore it, letting the default handling bubble back up toward the operating system (fall-through mechanism)</p></li>
 </ul>
 <section id="programming-by-difference">
-<h2>Programming by difference<a class="headerlink" href="#programming-by-difference" title="Link to this heading">#</a></h2>
-<p>This paradigm (used by both mobile and desktop operating systems) allows the programmer to avoid writing basic event-handling code from scratch every time, such as the code for dragging a window or minimizing it. This concept is closely tied to the principle of <strong>Default Behavior</strong> and drastically reduces <strong>Boilerplate code</strong>, meaning all that repetitive code not specific to the application’s logic that would otherwise be necessary just to make it function.
-The only events for which code must be written are those we want to handle in a custom way within our application.
-The handling of all unimplemented events will be passed to the operating system, which will manage them by default, as if the system were a predefined template and you only intervene when you want to modify a specific behavior.</p>
+<h2>Programming by Difference<a class="headerlink" href="#programming-by-difference" title="Link to this heading">#</a></h2>
+<p>This paradigm (used by both mobile and desktop operating systems) allows the developer to avoid rewriting basic event-handling code every time — such as the code for dragging a window or minimizing it to the taskbar. This concept is closely tied to the principle of <strong>Default Behavior</strong> and drastically reduces <strong>Boilerplate code</strong>, meaning all that repetitive code not specific to the application’s logic that would otherwise be necessary just to make it run.
+The only events for which code must be written are those that need to be handled in a custom way within the application.
+The handling of all unimplemented events will be passed to the operating system, which will manage them in a default manner — as if the system were a predefined template and you only intervene when you want to modify a specific behavior.</p>
+</section>
+<section id="practical-examples">
+<h2>Practical Examples<a class="headerlink" href="#practical-examples" title="Link to this heading">#</a></h2>
+<p>“Programming by Difference” manifests in a very concrete and recognizable way in two historically relevant contexts: native Windows applications (Win32) and Android applications. Despite syntactic and architectural differences, both systems express the same logical structure: the developer explicitly handles only the events they care about, and for everything else explicitly delegates to the system’s default behavior.</p>
+<section id="win32-wndproc-in-c">
+<h3>Win32 WndProc in C<a class="headerlink" href="#win32-wndproc-in-c" title="Link to this heading">#</a></h3>
+<p>In Win32, every window is associated with a <strong>Window Procedure</strong> (<code class="docutils literal notranslate"><span class="pre">WndProc</span></code>): a callback function that the operating system calls every time an event occurs on the window (click, resize, close, etc.).</p>
+<p>The developer implements this function by intercepting only the messages relevant to their application. All unhandled messages are passed to <code class="docutils literal notranslate"><span class="pre">DefWindowProc</span></code>, i.e., Windows’ default procedure, which represents the hierarchical fallback described in the paradigm.</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">0</span></code> signals to the system that the event has been <strong>consumed</strong> by the application and should not be propagated further. The call to <code class="docutils literal notranslate"><span class="pre">DefWindowProc</span></code> is instead the explicit <strong>fall-through</strong>: the application gives up handling and lets the system take its course.</p>
+</div></blockquote>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+C</label><div class="sd-tab-content docutils">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LRESULT</span><span class="w"> </span><span class="n">CALLBACK</span><span class="w"> </span><span class="n">WndProc</span><span class="p">(</span><span class="n">HWND</span><span class="w"> </span><span class="n">hwnd</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">WPARAM</span><span class="w"> </span><span class="n">wParam</span><span class="p">,</span><span class="w"> </span><span class="n">LPARAM</span><span class="w"> </span><span class="n">lParam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">WM_LBUTTONDOWN</span><span class="p">:</span>
+<span class="w">            </span><span class="c1">// Intercepted event: application&#39;s custom logic</span>
+<span class="w">            </span><span class="n">MyApp_HandleClick</span><span class="p">(</span><span class="n">wParam</span><span class="p">,</span><span class="w"> </span><span class="n">lParam</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Event consumed: not propagated to the system</span>
+
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">WM_DESTROY</span><span class="p">:</span>
+<span class="w">            </span><span class="c1">// We also intercept the close event to clean up resources</span>
+<span class="w">            </span><span class="n">MyApp_Cleanup</span><span class="p">();</span>
+<span class="w">            </span><span class="n">PostQuitMessage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// WM_MOVE, WM_SIZE, WM_PAINT and all other messages</span>
+<span class="w">        </span><span class="c1">// are not listed: they will fall through to the default below</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Fall-through: everything we haven&#39;t handled</span>
+<span class="w">    </span><span class="c1">// is delegated to Windows&#39; standard behavior</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DefWindowProc</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">wParam</span><span class="p">,</span><span class="w"> </span><span class="n">lParam</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Java (equivalent approach)</label><div class="sd-tab-content docutils">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// In pure Java (AWT/Swing) the same pattern is expressed</span>
+<span class="c1">// through a WindowAdapter, which provides empty default</span>
+<span class="c1">// implementations for all window events.</span>
+<span class="c1">// The developer overrides only what they need.</span>
+
+<span class="n">frame</span><span class="p">.</span><span class="na">addWindowListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">WindowAdapter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mouseClicked</span><span class="p">(</span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Intercepted event: application&#39;s custom logic</span>
+<span class="w">        </span><span class="n">myApp</span><span class="p">.</span><span class="na">handleClick</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// We don&#39;t call super: the event is consumed here</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">windowClosing</span><span class="p">(</span><span class="n">WindowEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// We also intercept the close event to clean up resources</span>
+<span class="w">        </span><span class="n">myApp</span><span class="p">.</span><span class="na">cleanup</span><span class="p">();</span>
+<span class="w">        </span><span class="n">frame</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// All other methods (windowOpened, windowIconified, etc.)</span>
+<span class="w">    </span><span class="c1">// are not overridden: WindowAdapter handles them</span>
+<span class="w">    </span><span class="c1">// with an empty body, equivalent to Win32&#39;s DefWindowProc</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="android-ontouchevent-in-kotlin-java">
+<h3>Android onTouchEvent in Kotlin/Java<a class="headerlink" href="#android-ontouchevent-in-kotlin-java" title="Link to this heading">#</a></h3>
+<p>In Android the paradigm is expressed through OOP inheritance. Every visual component (<code class="docutils literal notranslate"><span class="pre">View</span></code>) has a set of event-handling methods already implemented in the base class. The developer extends the class and <strong>overrides</strong> only the methods corresponding to the events they want to handle in a custom way.</p>
+<p>The fall-through is not a call to a system function like <code class="docutils literal notranslate"><span class="pre">DefWindowProc</span></code>, but a call to <code class="docutils literal notranslate"><span class="pre">super.onTouchEvent()</span></code>: it explicitly delegates to the behavior defined by the parent class in the inheritance hierarchy.</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">true</span></code> indicates that the event has been <strong>consumed</strong> by the current component. The <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">super.onTouchEvent(event)</span></code> is the <strong>fall-through</strong>: the component gives up handling and passes it up to the higher level of the hierarchy, exactly as happens in Harel’s statecharts with event bubbling toward the super-state.</p>
+</div></blockquote>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Kotlin</label><div class="sd-tab-content docutils">
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nc">MyView</span><span class="p">(</span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Intercepted event: component&#39;s custom logic</span>
+<span class="w">            </span><span class="n">myCustomLogic</span><span class="p">()</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">// Event consumed: does not bubble up to the parent View</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Fall-through for all other event types:</span>
+<span class="w">        </span><span class="c1">// delegates to the base class&#39;s default behavior</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">super</span><span class="p">.</span><span class="na">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// onDraw(), onMeasure(), onLayout() and all other methods</span>
+<span class="w">    </span><span class="c1">// are not overridden: the base View class handles them</span>
+<span class="w">    </span><span class="c1">// with Android&#39;s standard behavior</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Java</label><div class="sd-tab-content docutils">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyView</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyView</span><span class="p">(</span><span class="n">Context</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTouchEvent</span><span class="p">(</span><span class="n">MotionEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getAction</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MotionEvent</span><span class="p">.</span><span class="na">ACTION_DOWN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Intercepted event: component&#39;s custom logic</span>
+<span class="w">            </span><span class="n">myCustomLogic</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Event consumed: does not bubble up to the parent View</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Fall-through for all other event types:</span>
+<span class="w">        </span><span class="c1">// delegates to the base class&#39;s default behavior</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// onDraw(), onMeasure(), onLayout() and all other methods</span>
+<span class="w">    </span><span class="c1">// are not overridden: the base View class handles them</span>
+<span class="w">    </span><span class="c1">// with Android&#39;s standard behavior</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="the-common-pattern">
+<h3>The Common Pattern<a class="headerlink" href="#the-common-pattern" title="Link to this heading">#</a></h3>
+<p>In both examples the logical structure is identical, expressed with two different syntaxes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Win32 ©</p></th>
+<th class="head"><p>Android (Kotlin/Java)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Entry point</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WndProc</span></code> (system callback)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onTouchEvent</span></code> (base class method)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Event consumed</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Fall-through to default</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DefWindowProc(...)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">super.onTouchEvent(...)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Who defines the default</strong></p></td>
+<td><p>The Windows operating system</p></td>
+<td><p>Android’s <code class="docutils literal notranslate"><span class="pre">View</span></code> class</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Direction of hierarchy</strong></p></td>
+<td><p>System → Application (descends)</p></td>
+<td><p>Subclass → Superclass (ascends)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The direction is opposite, but the principle is the same: there is always a <strong>higher level</strong> that knows the default behavior, and the developer can choose whether to intervene or delegate.</p>
+</section>
 </section>
 <section id="application-to-harels-statecharts">
 <h2>Application to Harel’s Statecharts<a class="headerlink" href="#application-to-harels-statecharts" title="Link to this heading">#</a></h2>
 <p>This paradigm can also be applied to state machines.
-Imagine having a state machine that must handle a “stop” event within every state. According to classical state machine logic, each state would need to be treated as a standalone final state, requiring a transition arrow originating from every single state.
-With hierarchy, instead, it suffices to:</p>
+Imagine having a state machine that needs to handle a “stop” event inside every state. According to classical state machine logic, each state would be treated as a self-contained finite state and thus the stop would need to be handled with an arrow leaving every single state.
+With hierarchy instead, it is enough to:</p>
 <ul class="simple">
 <li><p>Create a Super-State that contains all the other states</p></li>
-<li><p>Define the stop-handling rule within the Super-State</p></li>
+<li><p>Define the stop-handling rule inside the Super-State</p></li>
 <li><p>States defined inside the Super-State will automatically inherit the rule if it is not handled within the sub-states themselves</p></li>
 </ul>
 <p>This mechanism is called <strong>Event Bubbling</strong>: if an event finds no handler in the current sub-state, it automatically bubbles up to the super-state. It is worth noting that the direction is opposite to the Windows model (where the system “descends” toward the application), but the hierarchical delegation logic is identical.</p>
 <p><img alt="Statechart notation for nesting states" src="../../_images/uh-state-charts.png" /></p>
-<p>Of course, a substate can itself act as a superstate for another substate nested within it, making it possible to create multiply-nested states.</p>
+<p>It is of course possible for a substate to act as a superstate for another substate nested within it, enabling the creation of multiply-nested states.</p>
 <br>
 <!-- Versions and languages set-up -->
 <style>
@@ -665,7 +845,13 @@ ___\\ \\     // //___
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-by-difference">Programming by difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-by-difference">Programming by Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-examples">Practical Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#win32-wndproc-in-c">Win32 WndProc in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#android-ontouchevent-in-kotlin-java">Android onTouchEvent in Kotlin/Java</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-pattern">The Common Pattern</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-harels-statecharts">Application to Harel’s Statecharts</a></li>
 </ul>
   </nav></div>
